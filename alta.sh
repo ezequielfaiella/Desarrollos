@@ -12,7 +12,7 @@ echo xxxx | sshfs ezequiel@192.168.2.6:/mnt/disk1/Trabajo /media/trabajo -o pass
 ### echo xxxxxx | sshfs ezequiel@wemedata.no-ip.info:/mnt/disk1/Trabajo /media/trabajo -o password_stdin -oworkaround=rename
 # sshfs admin@wemedata.no-ip.info:/mnt/disk1/Trabajo /media/trabajo
 
-#sudo curlftpfs ftp://admin:ironmaiden@wemedata.no-ip.info:21/disk1/Trabajo /media/trabajo
+#sudo curlftpfs ftp://admin:xxxxxxxxx@wemedata.no-ip.info:21/disk1/Trabajo /media/trabajo
 
 # host para sacar la ip de wemeserver......
 # esto te guarda en ip.txt la ip
