@@ -1,15 +1,15 @@
 #! /bin/bash
 #sudo sysctl vm.swappiness=10
 set -x
-### sudo mount -t cifs -o username=ezequiel,password=30363864,uid=$USER,gid=users,nounix,iocharset=utf8,rw //192.168.2.6/Trabajo /media/trabajo # NO PONER NOEXEC PORQUE DA ERROR
-# sudo mount -t cifs -o username=ezequiel,password=30363864,uid=ezequiel,gid=users //192.168.2.6/Trabajo /media/trabajo
+### sudo mount -t cifs -o username=ezequiel,password=xxxxxx,uid=$USER,gid=users,nounix,iocharset=utf8,rw //192.168.2.6/Trabajo /media/trabajo # NO PONER NOEXEC PORQUE DA ERROR
+# sudo mount -t cifs -o username=ezequiel,password=xxxxx,uid=ezequiel,gid=users //192.168.2.6/Trabajo /media/trabajo
 # sudo mount -t cifs -o credentials=~/.smbcredentials,uid=ezequiel,gid=users //192.168.2.6/Trabajo /media/trabajo
-# sudo mount -t cifs -o username=admin,password=ironmaiden,uid=ezequiel,gid=users //192.168.2.6/Audio /media/audio
+# sudo mount -t cifs -o username=admin,password=xxxxxxx,uid=ezequiel,gid=users //192.168.2.6/Audio /media/audio
 ### sshfs ezequiel@192.168.2.6:/mnt/disk1/Trabajo /media/trabajo
-echo 30363864 | sshfs ezequiel@192.168.2.6:/mnt/disk1/Trabajo /media/trabajo -o password_stdin -oworkaround=rename  -o uid=1000 -o gid=1000 
+echo xxxx | sshfs ezequiel@192.168.2.6:/mnt/disk1/Trabajo /media/trabajo -o password_stdin -oworkaround=rename  -o uid=1000 -o gid=1000 
 #    sshfs ezequiel@192.168.2.6:/mnt/disk1/Audio /media/audio
 #
-### echo 30363864 | sshfs ezequiel@wemedata.no-ip.info:/mnt/disk1/Trabajo /media/trabajo -o password_stdin -oworkaround=rename
+### echo xxxxxx | sshfs ezequiel@wemedata.no-ip.info:/mnt/disk1/Trabajo /media/trabajo -o password_stdin -oworkaround=rename
 # sshfs admin@wemedata.no-ip.info:/mnt/disk1/Trabajo /media/trabajo
 
 #sudo curlftpfs ftp://admin:ironmaiden@wemedata.no-ip.info:21/disk1/Trabajo /media/trabajo
