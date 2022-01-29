@@ -10,7 +10,7 @@ python3 -m pip install pytz==2020.1
 from telegram.ext import Updater, CommandHandler
 import os
 
-TOKEN = "1294492723:AAF8GldAIw7zc-W0KSG3Xucz_qYhM4_RH74"
+TOKEN = "xxxxxxxxxxxxxxxxxxxx"
 
 
 
