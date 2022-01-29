@@ -1,0 +1,26 @@
+CIFRAR ARCHIVOS
+
+ponerlo
+gpg -c nombredelarchivo
+quitarlo
+gpg nombredelarchivo.GPG
+
+borrar contenido de archivo, especial para logs
+
+cat /dev/null > nombredelarchivo
+
+
+buscar y reemplazar texto
+#sudo sed -i "/cadena_a_buscar/cadena_nueva/g" fichero
+
+
+Lock vs PID
+lock se usa para bloquear el uso a una sola ejecucion no importa cuantos
+quieran volver a ejecutarlo. Pid bloquea es uso a una vez por maquina.
+
+
+
+ejecutar macros de libreoffice desde la linea de comandos
+
+soffice "vnd.sun.star.script:Standard.Module1.Main?language=Basic&location=document" "/media/trabajo/Trabajo/Administracion/1 Uso Diario/Capital.ods"
+soffice --headless --invisible "vnd.sun.star.script:Standard.Module1.Main?language=Basic&location=document" "/media/trabajo/Trabajo/Administracion/1 Uso Diario/Capital.ods"

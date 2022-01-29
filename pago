@@ -1,0 +1,163 @@
+#!/bin/bash
+set -x
+
+pagocity(){
+PAGO=$(basename "$NOMBRE" | cut -d. -f1)
+pdftotext -layout $NOMBRE $PAGO.txt
+tr ' ' ',' < $PAGO.txt > $PAGO.csv
+sed -i '/^\s*$/d' $PAGO.csv					# borra lineas vacioas
+sed -i 's/^,,,,//' $PAGO.csv				# borra los que empiezan con 4 ,
+sed -i 's/,*,/,/g' $PAGO.csv				# reemplaza muchas , por una sola
+sed -i 's/^,//g' $PAGO.csv					# borra la , al inicio
+######## formato basico. ahora sigue con eliminar lineas en particular
+sed -i '/Id,de,impuesto:/d' $PAGO.csv
+#~ sed -i '/Nombre/d' $PAGO.csv
+sed -i '/Descripción/d' $PAGO.csv
+sed -i '/Información,complementaria:/d' $PAGO.csv
+sed -i '/WEME/d' $PAGO.csv
+sed -i '/Retenciones,Impositivas/d' $PAGO.csv
+sed -i '/DOMICILIO/d' $PAGO.csv
+sed -i '/Estado/d' $PAGO.csv
+sed -i '/TOTAL,RETENCION/d' $PAGO.csv
+sed -i 's/^1870$//' $PAGO.csv
+sed -i '/RETENIDO/d' $PAGO.csv
+sed -i '/RETENCION/d' $PAGO.csv
+sed -i '/C.U.I.T./d' $PAGO.csv
+sed -i 's/Nombre,de,la,Empresa:,INC,S.A.,//g' $PAGO.csv
+sed -i 's/Fecha,de,Cobro:,/Fecha de Cobro: /g' $PAGO.csv
+sed -i 's/Nro.,Transacción:,/Numero de Cheque: /g' $PAGO.csv
+sed -i 's/Fecha,de,Vto/Fecha de Vto/g' $PAGO.csv
+sed -i 's/:,/:/g' $PAGO.csv
+sed -i 's/TOTAL,PAGO/TOTAL PAGO/g' $PAGO.csv
+sed -i 's/,Sucursal:CASA,CENTRAL//g' $PAGO.csv
+sed -i '/DETALLE/d' $PAGO.csv
+sed -i 's/,Referencia:/\nReferencia:/g' $PAGO.csv
+sed -i 's/,Fecha de Vto:/\nFecha de Vto:/g' $PAGO.csv
+sed -i 's/Moneda:ARS,//g' $PAGO.csv
+############ formato a una columna y numeros
+sed -i 's/\([[:upper:]]\{5\}\)\([[:digit:]]\{4\}\)/\1,\2/g' $PAGO.csv # busca el patron AAAAA1231231 y lo cambia por AAAAA,123123
+sed -i 's/,/\n/3' $PAGO.csv
+sed -i '6d' $PAGO.csv					# borra la linea
+sed -i '7d' $PAGO.csv					# borra la linea
+sed -i '5 s/,/./' $PAGO.csv
+sed -i '5 s/:/:,/' $PAGO.csv
+sed -i '5 s/,CAJERO//' $PAGO.csv
+#~ sed -i '/BASE,IMPONIBLE/d' $PAGO.csv
+#~ sed -i '/NRO.COMPR/d' $PAGO.csv
+#~ sed -i '/INC,S.A./d' $PAGO.csv
+#~ sed -i '/DATOS,DE/d' $PAGO.csv
+#~ sed -i '1d' $PAGO.csv
+#~ ################################
+#~ NUMERO=$(head -3 $PAGO.csv | cut -d: -f2)# | cut -c 1-10)
+NUMERO=$(sed '/Referencia/!d' $PAGO.csv | cut -d: -f2) # | cut -c 1-10)
+mv $PAGO.csv $NUMERO.csv
+rm $PAGO.txt
+# rm $1
+}
+
+pagoinc(){
+PAGO=$(basename "$NOMBRE" | cut -d. -f1)
+pdftotext -layout $NOMBRE $PAGO.txt
+tr ' ' ',' < $PAGO.txt > $PAGO.csv
+sed -i '/^\s*$/d' $PAGO.csv					# borra lineas vacioas
+sed -i 's/^,,,,//' $PAGO.csv				# borra los que empiezan con 4 ,
+sed -i 's/,*,/,/g' $PAGO.csv				# reemplaza muchas , por una sola
+sed -i 's/^,//g' $PAGO.csv					# borra la , al inicio
+######## formato basico. ahora sigue con eliminar lineas en particular
+sed -i '/INC,S.,A./d' $PAGO.csv
+sed -i '/Cuyo,3323/d' $PAGO.csv
+sed -i '/Tel.,:,0800-444-8484,-,Fax:/d' $PAGO.csv
+sed -i '/CUIT:,30-68731043-4,Conv.,Mult:/d' $PAGO.csv
+sed -i '/Endoso/d' $PAGO.csv
+sed -i '/Dirección/d' $PAGO.csv
+sed -i '/Localidad/d' $PAGO.csv
+sed -i '/CUIT/d' $PAGO.csv
+sed -i '/Proveedor/d' $PAGO.csv
+sed -i '/Cheque,N°:/d' $PAGO.csv
+sed -i '/Facturas,aqui,detallados/d' $PAGO.csv
+sed -i '/será,cancelado,mediante/d' $PAGO.csv
+sed -i '/INC,S.A.,inscripta,/d' $PAGO.csv
+sed -i '/119,T.,A,de,S.A./d' $PAGO.csv
+sed -i '/Firma/d' $PAGO.csv
+sed -i '/Aclaración/d' $PAGO.csv
+sed -i 's/:,/: /g' $PAGO.csv
+sed -i 's/Concepto,F.,Doc.,Importe,Concepto,F.,Doc.,Importe/Concepto,Documento,Fecha Documento,Importe/g' $PAGO.csv
+sed -i 's/Orden,de,Pago,/Orden de Pago: ,/g' $PAGO.csv
+sed -i 's/DETALLE,DE,RETENCIONES/DETALLE DE RETENCIONES:/g' $PAGO.csv
+sed -i 's/Señores: GRUPO,WEME,SRL,Fecha: /Fecha Del Pago: ,/g' $PAGO.csv
+sed -i 's/Ord.,Cheque: GRUPO,WEME,SRL,Fecha,Vto:/Cheque a favor de: GRUPO WEME SRL Fecha Vencimiento: ,/g' $PAGO.csv
+sed -i 's/Subtotal,/Subtotal: ,,,,/g' $PAGO.csv
+sed -i 's/Total,Retenciones,/Total Retenciones: ,,,,-/g' $PAGO.csv
+sed -i 's/Total,Neto,a,Pagar,/Total Neto a Pagar: ,,,,/g' $PAGO.csv
+sed -i 's/RETENCION,IIBB,CAPITAL,FEDERAL,/RETENCION IIBB CAPITAL FEDERAL: ,,,-/g' $PAGO.csv
+sed -i 's/IIBB,REG.GRAL.BA,CONV.MULTILATERAL,/IIBB BA CONV.MULTILATERAL: ,,,-/g' $PAGO.csv
+sed -i 's/Ret.Gan.,Bienes,Resp.,Inscripto,/Ret Ganancias: ,,,-/g' $PAGO.csv
+sed -i 's/IVA,Reg.General,Resp.Inscripto,/IVA Reg.General Resp. Inscripto: ,,,-/g' $PAGO.csv
+sed -i 's/RETENCION,SUSS,REGIMEN,GRAL,RESP.IN,/RETENCION SUSS REGIMEN GRAL: ,,,-/g' $PAGO.csv
+sed -i 's/Otros/\nOtros/g' $PAGO.csv
+sed -i 's/FCE/\nFCE/g' $PAGO.csv
+sed -i 's/Fc/\nFc/g' $PAGO.csv
+sed -i 's/NDE/\nNDE/g' $PAGO.csv
+sed -i '/^\s*$/d' $PAGO.csv					# borra lineas vacias
+############ formato a una columna y numeros
+sed -i 's/\([[:digit:]]\{3\}\).\([[:digit:]]\{2\}\),\([[:digit:]]\{5\}\)/\1,\2\nOtros,\3/g' $PAGO.csv # arregla los que vienen sin descripcion
+# sed -i 's/\([[:upper:]]\{5\}\)\([[:digit:]]\{4\}\)/\1,\2/g' $PAGO.csv # busca el patron AAAAA1231231 y lo cambia por AAAAA,123123
+# sed -i '5 s/,/./' $PAGO.csv
+# sed -i '5 s/:/:,/' $PAGO.csv
+# sed -i '5 s/,CAJERO//' $PAGO.csv
+sed -i 's/,$//g' $PAGO.csv					# borra la , al inicio
+sed -i 's/FCE./\FCE,/g' $PAGO.csv
+sed -i 's/NDE,INC/NDE INC/g' $PAGO.csv
+sed -i 's/202\([0-9]\),\(-\?[0-9]\)/202\1\.\2/g' $PAGO.csv     # reemplaza las comas por punto entre 2 numeros
+sed -i 's/\([0-9]\),\(-\?[0-9]\)/\1\.\2/g' $PAGO.csv     # reemplaza las comas por punto entre 2 numeros
+sed -i 's/\([0-9]\)\([0-9]\).\([0-9]\)\([0-9]\).202\([0-9]\)./\12\/\34\/202\5\,/g' $PAGO.csv # arreglo las fechas le cambio el . por / y agrego una , al final
+sed -i '2 s/\([0-9]\).\(-\?[0-9]\)/\1\/\2/' $PAGO.csv     # reemplaza las comas por punto entre 2 numeros de la fila 2
+sed -i '2 s/\([0-9]\).\(-\?[0-9]\)/\1\/\2/2' $PAGO.csv     # reemplaza las comas por punto entre 2 numeros de la fila 2
+sed -i '3 s/\([0-9]\).\(-\?[0-9]\)/\1\/\2/' $PAGO.csv     # reemplaza las comas por punto entre 2 numeros de la fila 2
+sed -i '3 s/\([0-9]\).\(-\?[0-9]\)/\1\/\2/2' $PAGO.csv     # reemplaza las comas por punto entre 2 numeros de la fila 2
+sed -i 's/\([[:digit:]]\{5\}\)A\([[:digit:]]\{8\}\)./\1A\2,/g' $PAGO.csv # busca el patron 00000A12345678. y lo cambia por 00000A12345678,
+sed -i 's/\([[:digit:]]\{4\}\)A\([[:digit:]]\{8\}\)./\1A\2,/g' $PAGO.csv # busca el patron 0000A12345678, y lo cambia por 0000A12345678,
+sed -i 's/^\([[:digit:]]\{4\}\)/\Otros;\1/g' $PAGO.csv # busca el patron 0000, y lo cambia por Otros;0000 para los debitos que vienen sin nombre,
+sed -i 's/,/\;/g' $PAGO.csv
+sed -i '4,$ s/\(.*\)\./\1,/' $PAGO.csv
+sed -i 's/\([[:digit:]]\{3\}\).\([[:digit:]]\{2\}\)\/\([[:digit:]]\{2\}\)\/\([[:digit:]]\{4\}\)./\1;\2\/\3\/\4;/g' $PAGO.csv # busca el patron 123.22/01/2020 y lo cambia por 123;20/02/2020
+#sed -i 's/;Orden de Pago//2g' # borrar la 2 aparicion y siguientes
+NUMERO=$(sed -n '1p' $PAGO.csv | awk 'BEGIN{FS=";"} {print $2}') #| cut -c 2-11)
+# NUMERO=$(sed '/Orden de Pago: /!d' $PAGO.csv | cut -d";" -f2) # | cut -c 1-10)
+#sed -i '$ d' $PAGO.csv   # borra la ultima linea
+#sed -i '$ d' $PAGO.csv
+#sed -i '$ d' $PAGO.csv
+#sed -i '$ d' $PAGO.csv
+#sed -i '$ d' $PAGO.csv
+#sed -i '$ d' $PAGO.csv
+#sed -i '$ d' $PAGO.csv
+echo $NUMERO
+mv $PAGO.csv $NUMERO.csv
+mv $NOMBRE $NUMERO.pdf
+rm $PAGO.txt
+# rm $1
+
+head -4 $NUMERO'.csv' | tee -a cabecera.csv
+tail -9 $NUMERO'.csv' | tee -a final.csv
+sed -i '/Fc/d' final.csv
+sed -i '/FCE/d' final.csv
+sed -i '/Otros/d' final.csv
+cat $NUMERO'.csv' | grep 'Fc' | tee -a comprobantes.csv
+cat $NUMERO'.csv' | grep 'FCE' | tee -a comprobantes.csv
+cat $NUMERO'.csv' | grep 'Otros' | tee -a comprobantes.csv
+cat cabecera.csv comprobantes.csv final.csv | tee $NUMERO.csv
+rm cabecera.csv comprobantes.csv final.csv 
+
+: << EOF
+#sed -i "5,15 s/.\{65\}/&\n/g" $PAGO.txt # para cortar la linea y bajar a los 65 caracteres para las lineas entre la 5 y la 15
+
+EOF
+}
+
+ARCHIVO=$(basename "$1" | cut -d. -f1)
+NOMBRE=$1
+if [ $ARCHIVO = "Payment" ]; then
+    pagocity
+    else
+    pagoinc
+fi

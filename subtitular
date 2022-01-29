@@ -1,0 +1,78 @@
+#!/bin/bash
+
+input=$(basename "$1")
+movie="${input%.*}"
+extension="${input##*.}"
+
+# Comprobar que el archivo es un video
+mimetype="$(file -b -i "$input")"
+
+if [ -z "$(echo $mimetype | grep -i 'video')" ]; then
+	zenity --error									\
+		   --title="Subtitular película" 			\
+		   --text="El archivo $input no es un video"
+else
+	# Mostrar la ventana de diálogo
+	if dialog=$(yad --title "Subtitular $movie" 	 \
+		 --center --width=400 --borders=15			 \
+		 --image="subtitle" 						 \
+		 --image-on-top 							 \
+		 --text="Escriba el nombre de la película y selecciones los subtítulos\n" \
+		 --form 							  	     \
+		 --field="Título:" "$movie"					 \
+		 --field="Subtítulos:":FL					 \
+		); then
+		# Capturar las variables de la ventana de diálogo
+		title=$(echo $dialog | awk 'BEGIN {FS="|" } { print $1 }')
+		subtitle=$(echo $dialog | awk 'BEGIN {FS="|" } { print $2 }')
+		encoding=$(file -bi "$subtitle" | awk 'BEGIN {FS="=" } { print $2 }')
+		output="$title"
+
+		# Comprobar errores
+		if [[ -z "$title" && -z "$subtitle" ]]; then	
+			exit 1
+		fi
+
+		if [ -z "$title" ]; then		
+			zenity --error									\
+			       --title="Subtitular película" 			\
+			       --text="No ha escrito el título"
+			exit 1
+		fi
+
+		if [ -z "$subtitle" ]; then		
+			zenity --error									\
+			       --title="Subtitular película" 			\
+			       --text="No ha seleccionado subtítulos"
+			exit 1
+		fi
+
+		if [ ! "${output##*.}" == "mkv" ]; then
+			output="$title.mkv"
+		fi
+
+		if [ "$output" == "$input" ]; then		
+			output="[NEW]-$output"
+		fi
+
+		# Obtener datos para mostrar el progreso de subtitulado
+		movie_length=( $(ffmpeg -i "$input" 2>&1 | sed -n "s/.* Duration: \([^,]*\), start: .*/\1/p") )
+		movie_length_seconds=( $(echo "$movie_length" | awk -F':'  '{ print $1*3600 + $2*60 + $3 }'));
+		movie_fps=( $(ffmpeg -i "$input" 2>&1 | sed -n "s/.*, \(.*\) tbr.*/\1/p") )
+		total_frames=( $(echo $movie_length_seconds $movie_fps | awk '{ printf( "%3.0f\n" ,($1*$2)) } '));
+
+		# Subtitular la película y mostrar información sobre el progreso
+		ffmpeg -y -i "$input" -sub_charenc "$encoding" -i "$subtitle" -map 0:0 -map 0:1 -map 1:0 -c:v copy -c:a copy -c:s srt -metadata:s:a:0 language=eng -metadata:s:s:0 language=spa -metadata title="$title" "$output" 2>&1 | awk -vRS="\r" '$1 ~ /frame/ {gsub(/frame=/," ");gsub(/fps=/," ");gsub(/kB/," ");gsub(/time=/," ");gsub(/ \(/," ");print "\n#Subtitulando '"$input"'.\\n\\nTime elapsed in video :\\t"$6"\\t\tDuration of video :\\t'$movie_length'\\nTime Remaining :\\t\t"int((('$total_frames'-$1)/$2)/3600)":"int((((('$total_frames'-$1)/$2)/3600)-(int((('$total_frames'-$1)/$2)/3600)))*60)":"int((((('$total_frames'-$1)/$2)/60)-(int((('$total_frames'-$1)/$2)/60)))*60)"\\t\t\tPercent complete :\\t"int(($1/'$total_frames')*100) " %\\n" ; fflush();}' | zenity --progress --title="$output" --width=500 --pulsate --auto-kill --auto-close 
+
+		# Subtitular la película sin información sobre el progreso		
+		#ffmpeg -hide_banner -y -i "$movie" -sub_charenc "$encoding" -i "$subtitle" -map 0:0 -map 0:1 -map 1:0 -c:v copy -c:a copy -c:s srt -metadata:s:a:0 language=eng -metadata:s:s:0 language=spa -metadata title="$title" "$title.mkv" | zenity --title="$title" --width=350 --progress --pulsate --auto-kill --auto-close
+
+		# Comprobar si el comando anterior fue exitoso.
+		if [ "${PIPESTATUS[0]}" = 1 ];then
+			zenity --error --text="No se pudo subtitular."
+		fi
+
+	fi
+fi
+
+

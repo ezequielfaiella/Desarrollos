@@ -1,0 +1,14 @@
+Comandos:
+1- para actualizar los cambios hechos antes de subir
+git add .
+	se puede ver las modificaciones y si estas aprobadas para subir o no con 
+	git status
+
+2- informar los cambios y decidir que se sube
+git commit
+
+3- sube los cambios
+git push -u origin master
+
+4- para actualizar desde el repositorio
+git pull origin master

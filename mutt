@@ -1,0 +1,52 @@
+#! /bin/bash
+
+#################################################################################
+# REVISA QUE ESTE INSTALADO EL PAQUETE PARA COMPRIMIR
+instalado() {
+#Comprobamos si esta instalado el paquete wget mediante el comando aptitude
+# aux=$(aptitude show p7zip-full | grep "Estado: instalado")
+PROGRAMA=mutt
+aux=$(dpkg --get-selections | grep "$PROGRAMA" | grep "install")
+# if `echo "$aux" | grep "Estado: instalado" >/dev/null`
+if `echo "$aux" | grep "install" >/dev/null`
+then
+return 1
+else
+return 0
+fi
+}
+# llamamos a la funcion
+instalado $1 &> /dev/null
+#Comprobamos el resultado... si da 1 es que esta instalado y si da 0 es que no esta instalado.
+if [ "$?" = "1" ]
+then
+#Si el paquete esta instalado mando un mensaje
+echo el paquete $aux ya esta instado.
+#Si no estuviese instalado...por  ejemplo lo instalamos...
+else
+#sudo apt-get install leafpad
+echo El paquete $aux no esta instalado
+sudo apt-get install $PROGRAMA
+fi
+#################################################################################
+
+mkdir ~/Mail
+echo 'set from = "xxxxxxxxxxxxxxx";'>> ~/.muttrc
+echo 'set realname = "xxxxxxxxxxxxxxx";'>> ~/.muttrc
+echo 'set imap_user = "xxxxxxxxxxxxxxx";'>> ~/.muttrc
+echo 'set imap_pass = "xxxxxxxxxxxxxxx";'>> ~/.muttrc
+
+echo 'set folder = "imaps://imap.gmail.com:993";'>> ~/.muttrc
+echo 'set spoolfile = "+INBOX";'>> ~/.muttrc
+echo 'set postponed ="+[Gmail]/Drafts";'>> ~/.muttrc
+echo 'set header_cache =~/.mutt/cache/headers;'>> ~/.muttrc
+echo 'set message_cachedir =~/.mutt/cache/bodies;'>> ~/.muttrc
+echo 'set certificate_file =~/.mutt/certificates;'>> ~/.muttrc
+
+echo 'set move=no #para que no mueva los mensajes al salir'>> ~/.muttrc
+echo 'set include=yes #para que incluya el mensaje recibido al responder'>> ~/.muttrc
+echo 'set reply_to=yes'>> ~/.muttrc
+echo 'set pager_index_lines=6'>> ~/.muttrc
+
+echo 'set smtp_url = "smtp://xxxxxxxxxxxxxxx@smtp.gmail.com:587/";'>> ~/.muttrc
+echo 'set smtp_pass = "xxxxxxxxxxxxxxx";'>> ~/.muttrc

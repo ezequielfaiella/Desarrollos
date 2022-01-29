@@ -1,0 +1,55 @@
+#!/bin/bash
+##################################################################################
+# ESTA EL LA BASE A USAR PARA TODO SCRIPT. CREA UN LOG, DETIENE SI HAY ERROR Y   #
+# PERMITE UNA SOLA EJECUCION POR PC. ADEMAS CREA UN DIR TEMPORAL QUE SE BORRA    #
+# AL TERMINAR LA EJECUCUIN DEL MISMO						 #																	#
+##################################################################################
+source ~/.bash_aliases
+export DISPLAY=:0.0
+
+# SI HAY ERROR DETIENE EL SCRIPT
+set -ex  # SE PUEDE PONER -ex PARA QUE ADEMAS MUESTRE EL COMANDO QUE EJECUTA
+
+# IMPRIME NUMERO DE LINEA PARA SABER DONDE FALLA
+PS4 = 'LINENO:' 
+
+# BORRA EL ARCHIVO .PID CUANDO RECIBE ALGUNA DE LAS SEÑALES ESTABLECIDAS
+# Y CREA UN DIR TEMPORAL QUE AL SALIR SE BORRA
+	tmp=$(mktemp -d -t tmp.XXXXXXXXXX)
+function finish {
+	rm -rf "$tmp"
+	rm -rf "$pidfile"
+}
+trap finish INT TERM EXIT
+
+# ESTABLECE UN ARCHIVO PARA LIMITAR A UNA EJECUCION
+scriptname=$(basename $0)
+pidfile="/$tmp/${scriptname}.pid"
+#pidfile="$dir/${scriptname}.pid"
+dir=$(readlink -f "$0")
+
+# BLOQUEA LA EJECUCION A UNA SOLA VEZ POR MAQUINA
+exec 200> $pidfile
+flock -n 200 || exit 1
+pid=$$
+echo $pid 1>&200
+
+##################################################################################
+# REVISA QUE ESTE INSTALADO EL PAQUETE NECESARIO
+instalado PROGRAMA
+##################################################################################
+
+# CREA UN LOG CON TODO LO QUE SUCEDE CON LA EJECUCION
+exec 2>&1
+{
+##################################################################################
+#                           INICIO DEL SCRIPT																			#
+##################################################################################
+
+
+
+
+##################################################################################
+#                           FIN DEL SCRIPT		  																	#
+##################################################################################
+} | tee -a $dir.log

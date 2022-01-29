@@ -1,0 +1,168 @@
+#!/bin/bash
+###################################################################################
+# ESTA EL LA BASE A USAR PARA TODO SCRIPT. CREA UN LOG, DETIENE SI HAY ERROR Y 		#
+# PERMITE UNA SOLA EJECUCION POR PC.	ADEMAS CREA UN DIR TEMPORAL QUE SE BORRA		#
+# AL TERMINAR LA EJECUCUIN DEL MISMO																							#
+###################################################################################
+
+export DISPLAY=:0.0
+
+# SI HAY ERROR DETIENE EL SCRIPT
+#~ set -ex  # SE PUEDE PONER -ex PARA QUE ADEMAS MUESTRE EL COMANDO QUE EJECUTA
+
+# BORRA EL ARCHIVO .PID CUANDO RECIBE ALGUNA DE LAS SEÑALES ESTABLECIDAS
+# Y CREA UN DIR TEMPORAL QUE AL SALIR SE BORRA
+	tmp=$(mktemp -d -t tmp.XXXXXXXXXX)
+function finish {
+	rm -rf "$tmp"
+	rm -rf "$pidfile"
+}
+trap finish INT TERM EXIT
+
+# ESTABLECE UN ARCHIVO PARA LIMITAR A UNA EJECUCION
+scriptname=$(basename $0)
+pidfile="/$tmp/${scriptname}.pid"
+#pidfile="$dir/${scriptname}.pid"
+dir=$(readlink -f "$0")
+
+# BLOQUEA LA EJECUCION A UNA SOLA VEZ POR MAQUINA
+exec 200> $pidfile
+flock -n 200 || exit 1
+pid=$$
+echo $pid 1>&200
+
+#################################################################################
+# REVISA QUE ESTE INSTALADO EL PAQUETE NECESARIO
+instalado() {
+#Comprobamos si esta instalado el paquete wget mediante el comando aptitude
+# aux=$(aptitude show p7zip-full | grep "Estado: instalado")
+PROGRAMA="7z"
+aux=$(dpkg --get-selections | grep "$PROGRAMA" | grep "install")
+# if `echo "$aux" | grep "Estado: instalado" >/dev/null`
+if `echo "$aux" | grep "install" >/dev/null`
+then
+return 1
+else
+return 0
+fi
+}
+#~ # llamamos a la funcion
+#~ instalado $1 &> /dev/null
+#~ #Comprobamos el resultado... si da 1 es que esta instalado y si da 0 es que no esta instalado.
+#~ if [ "$?" = "1" ]
+#~ then
+#~ #Si el paquete esta instalado mando un mensaje
+#~ echo el paquete $aux ya esta instado.
+#~ #Si no estuviese instalado...por  ejemplo lo instalamos...
+#~ else
+#~ #sudo apt-get install leafpad
+#~ echo El paquete $aux no esta instalado
+#~ sudo apt-get -y install $PROGRAMA
+#~ fi
+limpieza() {
+ruta="$PWD"
+cd "$ruta"
+ls *.xmp *.pp3 > /tmp/HUERFANO
+IFS=$'\n'
+for LINEA in $(cat /tmp/HUERFANO) ; do
+  for VALOR in $LINEA ; do
+	#~ [ -f $(echo $VALOR | rev | cut -c 5- | rev) ] || mv ${VALOR} ${VALOR}_paraborrar
+	[ -f $(echo $VALOR | rev | cut -c 5- | rev) ] || rm ${VALOR}
+  done
+done
+rm /tmp/HUERFANO
+exit
+}
+###################################################################################
+#                           INICIO DEL SCRIPT										#
+###################################################################################
+#~ ruta="/media/ezequiel/3366-6330/DCIM/100D5300/Vacaciones\ 2018/"
+ruta=$PWD
+#~ ls "$ruta" | cut -d "." -f1 > /tmp/NEF
+ls "$ruta" > /tmp/NEF
+ls "$ruta"/Procesadas | cut -d "." -f1 > /tmp/JPG
+sed -i '/Procesadas/d' /tmp/NEF
+sed -i '/.xmp/d' /tmp/NEF
+sed -i 's/.NEF//g' /tmp/NEF
+sed -i '/\_[0-9/][0-9]$/d' /tmp/JPG
+cp /tmp/NEF /tmp/NEF_original
+
+IFS=$'\n'
+for LINEA in $(cat /tmp/JPG) ; do
+  for VALOR in $LINEA ; do
+	echo $VALOR | cut -d "." -f1 
+	sed -i "/$VALOR/d" /tmp/NEF
+  done
+done
+
+IFS=$'\n'
+for LINEA in $(cat /tmp/NEF) ; do
+  for VALOR in $LINEA ; do
+	echo $VALOR | cut -d "." -f1 
+	sed -i "/$VALOR/d" /tmp/NEF_original
+  done
+done
+
+IFS=$'\n'
+for LINEA in $(cat /tmp/NEF_original) ; do
+  for VALOR in $LINEA ; do
+	echo "$ruta"/"$VALOR".NEF >> /tmp/comprimir
+	echo "$ruta"/"$VALOR".NEF.xmp >> /tmp/comprimir
+  done
+done
+
+7z a "$ruta"/Procesadas.7z @/tmp/comprimir
+xargs -a /tmp/comprimir -d'\n' rm
+
+rm /tmp/NEF_original
+rm /tmp/NEF
+rm /tmp/comprimir
+rm /tmp/JPG
+
+##### mismo proceso para las descartadas
+
+ls "$ruta" > /tmp/NEF
+ls "$ruta"/Descartadas | cut -d "." -f1 > /tmp/JPG
+sed -i '/Descartadas/d' /tmp/NEF
+sed -i '/.xmp/d' /tmp/NEF
+sed -i 's/.NEF//g' /tmp/NEF
+sed -i '/\_[0-9/][0-9]$/d' /tmp/JPG
+cp /tmp/NEF /tmp/NEF_original
+
+IFS=$'\n'
+for LINEA in $(cat /tmp/JPG) ; do
+  for VALOR in $LINEA ; do
+	echo $VALOR | cut -d "." -f1 
+	sed -i "/$VALOR/d" /tmp/NEF
+  done
+done
+
+IFS=$'\n'
+for LINEA in $(cat /tmp/NEF) ; do
+  for VALOR in $LINEA ; do
+	echo $VALOR | cut -d "." -f1 
+	sed -i "/$VALOR/d" /tmp/NEF_original
+  done
+done
+
+IFS=$'\n'
+for LINEA in $(cat /tmp/NEF_original) ; do
+  for VALOR in $LINEA ; do
+	echo "$ruta"/"$VALOR".NEF >> /tmp/comprimir
+	echo "$ruta"/"$VALOR".NEF.xmp >> /tmp/comprimir
+  done
+done
+
+7z a "$ruta"/Descartadas.7z @/tmp/comprimir
+xargs -a /tmp/comprimir -d'\n' rm
+
+rm /tmp/NEF_original
+rm /tmp/NEF
+rm /tmp/comprimir
+rm /tmp/JPG
+
+limpieza
+
+###################################################################################
+#                           FIN DEL SCRIPT		    								#
+###################################################################################

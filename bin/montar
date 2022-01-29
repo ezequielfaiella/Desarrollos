@@ -1,0 +1,76 @@
+#! /bin/bash
+
+#~ set -x
+
+FUENTE=~/fuente.sh
+if [ -f $FUENTE ]; then
+	source $FUENTE
+else
+	DISPLAY=:0 gdialog --msgbox "No se encuentra el archivo fuente en el HOME"
+	exit
+fi
+
+monitoreo () {
+if ps waux | grep -v grep | grep correos
+then
+		notify-send "El correo ya se esta monitoreando"
+else
+		notify-send "El correo NO se esta monitoreando"
+		correos &
+fi
+
+#~ if ps waux | grep -v grep | grep facturas
+#~ then
+		#~ notify-send "La facturacion ya se esta monitoreando"
+#~ else
+		#~ notify-send "La facturacion NO se esta monitoreando"
+		#~ facturas &
+#~ fi
+
+if ps waux | grep -v grep | grep conversion
+then
+		notify-send "La conversion ya se esta monitoreando"
+else
+		notify-send "La conversion NO se esta monitoreando"
+		conversion &
+fi
+exit
+sleep 3
+}
+
+carpeta (){
+Directorio=${DIRTRABAJO2}
+if [ ! -d $Directorio ]; then
+echo “No existe $Directorio”
+echo "Creando -> $Directorio"
+mkdir -pv $Directorio
+else
+echo "El Directorio $Directorio ya existe"
+fi
+}
+
+
+#~ MAC=$(/usr/sbin/arp -a | grep "192.168.2.1" | awk '{print $4}')
+MAC=$1
+case $MAC in
+	syncthing)
+				$LOCAL_SYNCTHING
+				#~ echo "local syncthing"
+			;;
+	s)
+				#~ sshfs -p77 -o uid=1000 -o gid=1000 administracion@192.168.2.3:/media/administracion/FDD1-2B4A/Trabajo /media/trabajo/Trabajo -oworkaround=rename
+				carpeta
+				$LOCAL_COMPLETO
+				#~ monitoreo
+				#~ if [ $? -eq 0 ]; then
+					#~ if [ "$1" != "s" ]; then
+						#~ monitoreo
+					#~ fi
+				#~ fi
+			;;
+	*)
+		carpeta
+		$LOCAL_COMPLETO
+		monitoreo
+		;;
+esac

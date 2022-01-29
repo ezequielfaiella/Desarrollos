@@ -1,0 +1,166 @@
+20210730-010526-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20210730-010526-PM: INFO [epic.py:123] busca el boton para loguerse
+20210806-010526-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20210806-010526-PM: INFO [epic.py:123] busca el boton para loguerse
+20210807-074719-AM: INFO [epic.py:118] se va a la pagina de epicgames
+20210807-074719-AM: INFO [epic.py:123] busca el boton para loguerse
+20210807-074725-AM: INFO [epic.py:130] va a iniciar sesion con google
+20210807-074906-AM: INFO [epic.py:118] se va a la pagina de epicgames
+20210807-074906-AM: INFO [epic.py:123] busca el boton para loguerse
+20210807-074912-AM: INFO [epic.py:130] va a iniciar sesion con google
+20210807-074927-AM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210807-074936-AM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210807-074936-AM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210807-074940-AM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210807-075058-AM: INFO [epic.py:118] se va a la pagina de epicgames
+20210807-075058-AM: INFO [epic.py:123] busca el boton para loguerse
+20210807-075104-AM: INFO [epic.py:130] va a iniciar sesion con google
+20210807-075119-AM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210807-075128-AM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210807-075128-AM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210807-075131-AM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210807-075145-AM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20210807-075145-AM: INFO [epic.py:184] cambia al iframe de la compra
+20210807-075145-AM: INFO [epic.py:186] empieza el proceso de compra
+20210807-075416-AM: INFO [epic.py:118] se va a la pagina de epicgames
+20210807-075416-AM: INFO [epic.py:123] busca el boton para loguerse
+20210807-075422-AM: INFO [epic.py:130] va a iniciar sesion con google
+20210807-075437-AM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210807-075446-AM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210807-075447-AM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210807-075450-AM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210807-075503-AM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20210807-075503-AM: INFO [epic.py:184] cambia al iframe de la compra
+20210807-075503-AM: INFO [epic.py:186] empieza el proceso de compra
+20210807-075527-AM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210807-075528-AM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210807-075531-AM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210807-075544-AM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20210807-075544-AM: INFO [epic.py:184] cambia al iframe de la compra
+20210807-075544-AM: INFO [epic.py:186] empieza el proceso de compra
+20210813-010534-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20210813-010534-PM: INFO [epic.py:123] busca el boton para loguerse
+20210813-010540-PM: INFO [epic.py:130] va a iniciar sesion con google
+20210813-010556-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210813-010609-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210813-010610-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210813-010613-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210813-010627-PM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20210813-010627-PM: INFO [epic.py:184] cambia al iframe de la compra
+20210813-010640-PM: INFO [epic.py:186] empieza el proceso de compra
+20210820-073726-AM: INFO [epic.py:118] se va a la pagina de epicgames
+20210820-073726-AM: INFO [epic.py:123] busca el boton para loguerse
+20210820-073732-AM: INFO [epic.py:130] va a iniciar sesion con google
+20210820-073747-AM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210820-073757-AM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210820-073757-AM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210820-073800-AM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210820-073813-AM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20210820-073813-AM: INFO [epic.py:184] cambia al iframe de la compra
+20210820-073820-AM: INFO [epic.py:186] empieza el proceso de compra
+20210820-073845-AM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210820-073845-AM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210820-073849-AM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210820-073902-AM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20210820-073902-AM: INFO [epic.py:184] cambia al iframe de la compra
+20210820-073904-AM: INFO [epic.py:186] empieza el proceso de compra
+20210820-073904-AM: INFO [epic.py:192] cambia al iframe de la compra
+20210820-010537-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20210820-010537-PM: INFO [epic.py:123] busca el boton para loguerse
+20210820-010544-PM: INFO [epic.py:130] va a iniciar sesion con google
+20210820-010600-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210820-010613-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210820-010615-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210820-010618-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210827-010534-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20210827-010534-PM: INFO [epic.py:123] busca el boton para loguerse
+20210827-010540-PM: INFO [epic.py:130] va a iniciar sesion con google
+20210827-010556-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210827-010610-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210827-010612-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210827-010615-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210903-010532-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20210903-010532-PM: INFO [epic.py:123] busca el boton para loguerse
+20210903-010538-PM: INFO [epic.py:130] va a iniciar sesion con google
+20210903-010554-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210903-010609-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210903-010610-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210903-010613-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210910-010532-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20210910-010532-PM: INFO [epic.py:123] busca el boton para loguerse
+20210910-010539-PM: INFO [epic.py:130] va a iniciar sesion con google
+20210910-010554-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210910-010608-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210910-010609-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210910-010612-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20210917-010533-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20210917-010533-PM: INFO [epic.py:123] busca el boton para loguerse
+20210917-010539-PM: INFO [epic.py:130] va a iniciar sesion con google
+20210917-010555-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20210917-010610-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20210917-010611-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20210917-010615-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20211001-010533-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20211001-010533-PM: INFO [epic.py:123] busca el boton para loguerse
+20211001-010540-PM: INFO [epic.py:130] va a iniciar sesion con google
+20211001-010555-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20211001-010609-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20211001-010611-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20211001-010614-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20211001-010628-PM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20211001-010628-PM: INFO [epic.py:184] cambia al iframe de la compra
+20211001-010632-PM: INFO [epic.py:186] empieza el proceso de compra
+20211001-010633-PM: INFO [epic.py:192] cambia al iframe de la compra
+20211008-010531-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20211008-010531-PM: INFO [epic.py:123] busca el boton para loguerse
+20211008-010538-PM: INFO [epic.py:130] va a iniciar sesion con google
+20211008-010553-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20211008-010606-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20211008-010607-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20211008-010611-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20211008-010624-PM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20211008-010624-PM: INFO [epic.py:184] cambia al iframe de la compra
+20211008-010637-PM: INFO [epic.py:186] empieza el proceso de compra
+20211015-010533-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20211015-010533-PM: INFO [epic.py:123] busca el boton para loguerse
+20211015-010540-PM: INFO [epic.py:130] va a iniciar sesion con google
+20211015-010555-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20211015-010610-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20211015-010612-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20211015-010615-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20211015-010628-PM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20211015-010630-PM: INFO [epic.py:184] cambia al iframe de la compra
+20211015-010630-PM: INFO [epic.py:186] empieza el proceso de compra
+20211015-010659-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20211015-010701-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20211015-010704-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20211015-010718-PM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20211015-010718-PM: INFO [epic.py:184] cambia al iframe de la compra
+20211015-010722-PM: INFO [epic.py:186] empieza el proceso de compra
+20211022-010533-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20211022-010533-PM: INFO [epic.py:123] busca el boton para loguerse
+20211022-010540-PM: INFO [epic.py:130] va a iniciar sesion con google
+20211022-010555-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20211022-010609-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20211022-010610-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20211022-010614-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20211022-010627-PM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20211022-010627-PM: INFO [epic.py:184] cambia al iframe de la compra
+20211022-010640-PM: INFO [epic.py:186] empieza el proceso de compra
+20211029-010532-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20211029-010532-PM: INFO [epic.py:123] busca el boton para loguerse
+20211029-010539-PM: INFO [epic.py:130] va a iniciar sesion con google
+20211029-010554-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20211029-010608-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20211029-010609-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20211029-010613-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20211105-010533-PM: INFO [epic.py:118] se va a la pagina de epicgames
+20211105-010533-PM: INFO [epic.py:123] busca el boton para loguerse
+20211105-010539-PM: INFO [epic.py:130] va a iniciar sesion con google
+20211105-010555-PM: INFO [epic.py:137] te dice cuantos juegos gratis hay
+20211105-010609-PM: INFO [epic.py:164] busca nuevamente cuantos juegos gratis hay para entrar en cada uno
+20211105-010610-PM: INFO [epic.py:166] va haciendo click en el elemento i de los encontrados
+20211105-010613-PM: INFO [epic.py:170] si aparece algun mensaje de mayor de edad, creo
+20211105-010627-PM: INFO [epic.py:179] si aparece algun mensaje de incompatible
+20211105-010627-PM: INFO [epic.py:184] cambia al iframe de la compra
+20211105-010641-PM: INFO [epic.py:186] empieza el proceso de compra

@@ -1,0 +1,11 @@
+#! /bin/bash
+
+Fecha=`date +"%Y%m%d"`
+X=0
+
+while( [ -f ${1}-${Fecha}-${X}.tar.xz ] )
+do
+  ((X++))
+done
+
+tar acvf  ${1}-${Fecha}-${X}.tar.xz ${1}

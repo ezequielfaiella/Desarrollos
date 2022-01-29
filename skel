@@ -1,0 +1,4 @@
+#! /bin/bash
+sudo rm -r /etc/skel
+sudo cp -r /home/$USER /etc/skel/
+sed -i -e 's@user-uid [0-9]*@user-uid 990@' /usr/share/initramfs-tools/scripts/casper-bottom/*adduser

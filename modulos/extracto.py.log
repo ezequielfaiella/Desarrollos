@@ -1,0 +1,433 @@
+20211223-024950-PM: INFO [extracto.py:252] inicia proceso de chequeo de existencia de archivos
+20211223-024950-PM: INFO [extracto.py:295] abre libro banco en BancoFrances.xlsx
+20211223-024950-PM: INFO [extracto.py:301] inicia proceso de conversion de datos para unificar tipos
+20211223-025502-PM: INFO [extracto.py:253] inicia proceso de chequeo de existencia de archivos
+20211223-025502-PM: INFO [extracto.py:296] abre libro banco en BancoFrances.xlsx
+20211223-025502-PM: INFO [extracto.py:302] inicia proceso de conversion de datos para unificar tipos
+20211223-025503-PM: INFO [extracto.py:340] inicia fun_extracto
+20211223-025503-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-025508-PM: INFO [extracto.py:368] carga en openpyxl el archivo de banco para darle formato
+20211223-025927-PM: INFO [extracto.py:255] inicia proceso de chequeo de existencia de archivos
+20211223-025927-PM: INFO [extracto.py:298] abre libro banco en BancoFrances.xlsx
+20211223-025927-PM: INFO [extracto.py:304] inicia proceso de conversion de datos para unificar tipos
+20211223-025928-PM: INFO [extracto.py:342] inicia fun_extracto
+20211223-025928-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-030106-PM: INFO [extracto.py:254] inicia proceso de chequeo de existencia de archivos
+20211223-030106-PM: INFO [extracto.py:297] abre libro banco en BancoFrances.xlsx
+20211223-030106-PM: INFO [extracto.py:303] inicia proceso de conversion de datos para unificar tipos
+20211223-030107-PM: INFO [extracto.py:341] inicia fun_extracto
+20211223-030107-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-031317-PM: INFO [extracto.py:254] inicia proceso de chequeo de existencia de archivos
+20211223-031317-PM: INFO [extracto.py:297] abre libro banco en BancoFrances.xlsx
+20211223-031317-PM: INFO [extracto.py:303] inicia proceso de conversion de datos para unificar tipos
+20211223-031319-PM: INFO [extracto.py:341] inicia fun_extracto
+20211223-031319-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-031421-PM: INFO [extracto.py:254] inicia proceso de chequeo de existencia de archivos
+20211223-031421-PM: INFO [extracto.py:297] abre libro banco en BancoFrances.xlsx
+20211223-031421-PM: INFO [extracto.py:303] inicia proceso de conversion de datos para unificar tipos
+20211223-031423-PM: INFO [extracto.py:341] inicia fun_extracto
+20211223-031423-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-031429-PM: INFO [extracto.py:369] carga en openpyxl el archivo de banco para darle formato
+20211223-031722-PM: INFO [extracto.py:253] inicia proceso de chequeo de existencia de archivos
+20211223-031722-PM: INFO [extracto.py:296] abre libro banco en BancoFrances.xlsx
+20211223-031722-PM: INFO [extracto.py:302] inicia proceso de conversion de datos para unificar tipos
+20211223-031724-PM: INFO [extracto.py:340] inicia fun_extracto
+20211223-031724-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-031729-PM: INFO [extracto.py:368] carga en openpyxl el archivo de banco para darle formato
+20211223-033139-PM: INFO [extracto.py:253] inicia proceso de chequeo de existencia de archivos
+20211223-033139-PM: INFO [extracto.py:296] abre libro banco en BancoFrances.xlsx
+20211223-033139-PM: INFO [extracto.py:302] inicia proceso de conversion de datos para unificar tipos
+20211223-033140-PM: INFO [extracto.py:340] inicia fun_extracto
+20211223-033140-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-033145-PM: INFO [extracto.py:368] carga en openpyxl el archivo de banco para darle formato
+20211223-033415-PM: INFO [extracto.py:253] inicia proceso de chequeo de existencia de archivos
+20211223-033415-PM: INFO [extracto.py:296] abre libro banco en BancoFrances.xlsx
+20211223-033415-PM: INFO [extracto.py:302] inicia proceso de conversion de datos para unificar tipos
+20211223-033416-PM: INFO [extracto.py:340] inicia fun_extracto
+20211223-033416-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-033421-PM: INFO [extracto.py:368] carga en openpyxl el archivo de banco para darle formato
+20211223-043000-PM: INFO [extracto.py:253] inicia proceso de chequeo de existencia de archivos
+20211223-043000-PM: INFO [extracto.py:296] abre libro banco en BancoFrances.xlsx
+20211223-043000-PM: INFO [extracto.py:302] inicia proceso de conversion de datos para unificar tipos
+20211223-043000-PM: INFO [extracto.py:310] inicia fun_depositos
+20211223-043000-PM: INFO [extracto.py:139] inicia proceso de comparacion de depositos
+20211223-043000-PM: INFO [extracto.py:142] empiezo a ajustar los datos
+20211223-043000-PM: INFO [extracto.py:156] hago el merge de los depósitos
+20211223-043000-PM: INFO [extracto.py:159] ajusto nuevamente los datos
+20211223-043000-PM: INFO [extracto.py:167] ordeno por fecha de emision
+20211223-043000-PM: INFO [extracto.py:171] lo mando al excel
+20211223-043005-PM: INFO [extracto.py:320] inicia fun_aceptados
+20211223-043005-PM: INFO [extracto.py:98] inicia proceso de comparacion de echeq aceptados
+20211223-043010-PM: INFO [extracto.py:330] inicia fun_emitidos
+20211223-043010-PM: INFO [extracto.py:57] inicia proceso de comparacion de echeq emitidos
+20211223-043012-PM: ERROR [extracto.py:88] fallo en proceso fun_emitidos. 'IntegerArray' object has no attribute 'tolist'
+20211223-043016-PM: INFO [extracto.py:340] inicia fun_extracto
+20211223-043016-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-043021-PM: INFO [extracto.py:351] inicia fun_cedidos
+20211223-043021-PM: INFO [extracto.py:236] inicia proceso de comparacion de cedidos
+20211223-043021-PM: INFO [extracto.py:240] hago el merge de los depósitos
+20211223-043021-PM: ERROR [extracto.py:246] fallo en proceso fun_cedisos. You are trying to merge on float64 and object columns. If you wish to proceed you should use pd.concat
+20211223-043024-PM: INFO [extracto.py:363] inicia fun_endosados
+20211223-043024-PM: INFO [extracto.py:220] inicia proceso de comparacion de endosos
+20211223-043024-PM: INFO [extracto.py:224] hago el merge de los depósitos
+20211223-043024-PM: INFO [extracto.py:227] lo mando al excel
+20211223-043029-PM: INFO [extracto.py:368] carga en openpyxl el archivo de banco para darle formato
+20211223-043333-PM: INFO [extracto.py:253] inicia proceso de chequeo de existencia de archivos
+20211223-043333-PM: INFO [extracto.py:258] no existe el archivo 23-12-2021-eCheqs-deposito.xls
+20211223-043333-PM: INFO [extracto.py:264] no existe el archivo 23-12-2021-eCheqs-aceptados.xls
+20211223-043333-PM: INFO [extracto.py:270] no existe el archivo 23-12-2021-eCheqs-emitidos.xls
+20211223-043333-PM: INFO [extracto.py:283] no existe el archivo 23-12-2021-eCheqs-cedidos.xls
+20211223-043333-PM: INFO [extracto.py:289] no existe el archivo 23-12-2021-eCheqs-endosados.xls
+20211223-043333-PM: INFO [extracto.py:296] abre libro banco en BancoFrances.xlsx
+20211223-043333-PM: INFO [extracto.py:302] inicia proceso de conversion de datos para unificar tipos
+20211223-043334-PM: INFO [extracto.py:340] inicia fun_extracto
+20211223-043334-PM: INFO [extracto.py:183] inicia proceso de comparacion de extracto
+20211223-043340-PM: INFO [extracto.py:368] carga en openpyxl el archivo de banco para darle formato
+20220103-090614-AM: INFO [extracto.py:302] inicia proceso de chequeo de existencia de archivos
+20220103-090614-AM: INFO [extracto.py:346] abre libro banco en BancoFrances.xlsx
+20220103-090614-AM: INFO [extracto.py:352] inicia proceso de conversion de datos para unificar tipos
+20220103-090615-AM: INFO [extracto.py:390] inicia fun_extracto
+20220103-090615-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-090639-AM: INFO [extracto.py:302] inicia proceso de chequeo de existencia de archivos
+20220103-090639-AM: INFO [extracto.py:346] abre libro banco en BancoFrances.xlsx
+20220103-090639-AM: INFO [extracto.py:352] inicia proceso de conversion de datos para unificar tipos
+20220103-090640-AM: INFO [extracto.py:390] inicia fun_extracto
+20220103-090640-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-090843-AM: INFO [extracto.py:302] inicia proceso de chequeo de existencia de archivos
+20220103-090843-AM: INFO [extracto.py:346] abre libro banco en BancoFrances.xlsx
+20220103-090843-AM: INFO [extracto.py:352] inicia proceso de conversion de datos para unificar tipos
+20220103-090844-AM: INFO [extracto.py:390] inicia fun_extracto
+20220103-090844-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-090938-AM: INFO [extracto.py:302] inicia proceso de chequeo de existencia de archivos
+20220103-090938-AM: INFO [extracto.py:346] abre libro banco en BancoFrances.xlsx
+20220103-090938-AM: INFO [extracto.py:352] inicia proceso de conversion de datos para unificar tipos
+20220103-090939-AM: INFO [extracto.py:390] inicia fun_extracto
+20220103-090939-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-090943-AM: INFO [extracto.py:302] inicia proceso de chequeo de existencia de archivos
+20220103-090943-AM: INFO [extracto.py:346] abre libro banco en BancoFrances.xlsx
+20220103-090943-AM: INFO [extracto.py:352] inicia proceso de conversion de datos para unificar tipos
+20220103-090944-AM: INFO [extracto.py:390] inicia fun_extracto
+20220103-090944-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-091126-AM: INFO [extracto.py:303] inicia proceso de chequeo de existencia de archivos
+20220103-091126-AM: INFO [extracto.py:347] abre libro banco en BancoFrances.xlsx
+20220103-091126-AM: INFO [extracto.py:353] inicia proceso de conversion de datos para unificar tipos
+20220103-091127-AM: INFO [extracto.py:391] inicia fun_extracto
+20220103-091127-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-091209-AM: INFO [extracto.py:303] inicia proceso de chequeo de existencia de archivos
+20220103-091209-AM: INFO [extracto.py:347] abre libro banco en BancoFrances.xlsx
+20220103-091209-AM: INFO [extracto.py:353] inicia proceso de conversion de datos para unificar tipos
+20220103-091210-AM: INFO [extracto.py:391] inicia fun_extracto
+20220103-091210-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-091742-AM: INFO [extracto.py:303] inicia proceso de chequeo de existencia de archivos
+20220103-091742-AM: INFO [extracto.py:347] abre libro banco en BancoFrances.xlsx
+20220103-091742-AM: INFO [extracto.py:353] inicia proceso de conversion de datos para unificar tipos
+20220103-091743-AM: INFO [extracto.py:391] inicia fun_extracto
+20220103-091743-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-092055-AM: INFO [extracto.py:303] inicia proceso de chequeo de existencia de archivos
+20220103-092055-AM: INFO [extracto.py:347] abre libro banco en BancoFrances.xlsx
+20220103-092055-AM: INFO [extracto.py:353] inicia proceso de conversion de datos para unificar tipos
+20220103-092056-AM: INFO [extracto.py:391] inicia fun_extracto
+20220103-092056-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-092411-AM: INFO [extracto.py:304] inicia proceso de chequeo de existencia de archivos
+20220103-092411-AM: INFO [extracto.py:348] abre libro banco en BancoFrances.xlsx
+20220103-092411-AM: INFO [extracto.py:354] inicia proceso de conversion de datos para unificar tipos
+20220103-092411-AM: INFO [extracto.py:392] inicia fun_extracto
+20220103-092411-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-092429-AM: INFO [extracto.py:304] inicia proceso de chequeo de existencia de archivos
+20220103-092429-AM: INFO [extracto.py:348] abre libro banco en BancoFrances.xlsx
+20220103-092429-AM: INFO [extracto.py:354] inicia proceso de conversion de datos para unificar tipos
+20220103-092430-AM: INFO [extracto.py:392] inicia fun_extracto
+20220103-092430-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-092505-AM: INFO [extracto.py:304] inicia proceso de chequeo de existencia de archivos
+20220103-092505-AM: INFO [extracto.py:348] abre libro banco en BancoFrances.xlsx
+20220103-092505-AM: INFO [extracto.py:354] inicia proceso de conversion de datos para unificar tipos
+20220103-092506-AM: INFO [extracto.py:392] inicia fun_extracto
+20220103-092506-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-092546-AM: INFO [extracto.py:304] inicia proceso de chequeo de existencia de archivos
+20220103-092546-AM: INFO [extracto.py:348] abre libro banco en BancoFrances.xlsx
+20220103-092546-AM: INFO [extracto.py:354] inicia proceso de conversion de datos para unificar tipos
+20220103-092547-AM: INFO [extracto.py:392] inicia fun_extracto
+20220103-092547-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-092652-AM: INFO [extracto.py:290] inicia proceso de chequeo de existencia de archivos
+20220103-092652-AM: INFO [extracto.py:334] abre libro banco en BancoFrances.xlsx
+20220103-092652-AM: INFO [extracto.py:340] inicia proceso de conversion de datos para unificar tipos
+20220103-092653-AM: INFO [extracto.py:378] inicia fun_extracto
+20220103-092653-AM: INFO [extracto.py:220] inicia proceso de comparacion de extracto
+20220103-092658-AM: INFO [extracto.py:406] carga en openpyxl el archivo de banco para darle formato
+20220103-093454-AM: INFO [extracto.py:284] inicia proceso de chequeo de existencia de archivos
+20220103-093454-AM: INFO [extracto.py:328] abre libro banco en BancoFrances.xlsx
+20220103-093454-AM: INFO [extracto.py:334] inicia proceso de conversion de datos para unificar tipos
+20220103-093454-AM: INFO [extracto.py:352] inicia fun_aceptados
+20220103-093454-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-093459-AM: INFO [extracto.py:400] carga en openpyxl el archivo de banco para darle formato
+20220103-094007-AM: INFO [extracto.py:284] inicia proceso de chequeo de existencia de archivos
+20220103-094007-AM: INFO [extracto.py:328] abre libro banco en BancoFrances.xlsx
+20220103-094007-AM: INFO [extracto.py:334] inicia proceso de conversion de datos para unificar tipos
+20220103-094007-AM: INFO [extracto.py:352] inicia fun_aceptados
+20220103-094007-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-094012-AM: INFO [extracto.py:400] carga en openpyxl el archivo de banco para darle formato
+20220103-094219-AM: INFO [extracto.py:285] inicia proceso de chequeo de existencia de archivos
+20220103-094219-AM: INFO [extracto.py:329] abre libro banco en BancoFrances.xlsx
+20220103-094219-AM: INFO [extracto.py:335] inicia proceso de conversion de datos para unificar tipos
+20220103-094219-AM: INFO [extracto.py:353] inicia fun_aceptados
+20220103-094219-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-094224-AM: INFO [extracto.py:401] carga en openpyxl el archivo de banco para darle formato
+20220103-094525-AM: INFO [extracto.py:286] inicia proceso de chequeo de existencia de archivos
+20220103-094525-AM: INFO [extracto.py:330] abre libro banco en BancoFrances.xlsx
+20220103-094525-AM: INFO [extracto.py:336] inicia proceso de conversion de datos para unificar tipos
+20220103-094525-AM: INFO [extracto.py:354] inicia fun_aceptados
+20220103-094525-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-094710-AM: INFO [extracto.py:287] inicia proceso de chequeo de existencia de archivos
+20220103-094710-AM: INFO [extracto.py:331] abre libro banco en BancoFrances.xlsx
+20220103-094710-AM: INFO [extracto.py:337] inicia proceso de conversion de datos para unificar tipos
+20220103-094710-AM: INFO [extracto.py:355] inicia fun_aceptados
+20220103-094710-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-094955-AM: INFO [extracto.py:288] inicia proceso de chequeo de existencia de archivos
+20220103-094955-AM: INFO [extracto.py:332] abre libro banco en BancoFrances.xlsx
+20220103-094955-AM: INFO [extracto.py:338] inicia proceso de conversion de datos para unificar tipos
+20220103-094955-AM: INFO [extracto.py:356] inicia fun_aceptados
+20220103-094955-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-095011-AM: INFO [extracto.py:288] inicia proceso de chequeo de existencia de archivos
+20220103-095011-AM: INFO [extracto.py:332] abre libro banco en BancoFrances.xlsx
+20220103-095011-AM: INFO [extracto.py:338] inicia proceso de conversion de datos para unificar tipos
+20220103-095011-AM: INFO [extracto.py:356] inicia fun_aceptados
+20220103-095011-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-095118-AM: INFO [extracto.py:288] inicia proceso de chequeo de existencia de archivos
+20220103-095118-AM: INFO [extracto.py:332] abre libro banco en BancoFrances.xlsx
+20220103-095118-AM: INFO [extracto.py:338] inicia proceso de conversion de datos para unificar tipos
+20220103-095118-AM: INFO [extracto.py:356] inicia fun_aceptados
+20220103-095118-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-095219-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-095219-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-095219-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-095220-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-095220-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-095725-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-095725-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-095725-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-095725-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-095725-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-095823-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-095823-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-095823-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-095823-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-095823-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-095828-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220103-100133-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-100133-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-100133-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-100149-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-100149-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-100156-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220103-100631-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-100631-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-100631-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-100646-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-100646-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-100653-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220103-100917-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-100917-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-100917-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-100917-AM: INFO [extracto.py:347] inicia fun_depositos
+20220103-100917-AM: INFO [extracto.py:149] inicia proceso de comparacion de depositos
+20220103-100917-AM: INFO [extracto.py:152] empiezo a ajustar los datos
+20220103-100917-AM: INFO [extracto.py:166] hago el merge de los depósitos
+20220103-100917-AM: INFO [extracto.py:169] ajusto nuevamente los datos
+20220103-100917-AM: INFO [extracto.py:177] ordeno por fecha de emision
+20220103-100917-AM: INFO [extracto.py:181] lo mando al excel
+20220103-100922-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-100922-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-100927-AM: INFO [extracto.py:367] inicia fun_emitidos
+20220103-100927-AM: INFO [extracto.py:58] inicia proceso de comparacion de echeq emitidos
+20220103-100928-AM: ERROR [extracto.py:89] fallo en proceso fun_emitidos. 'IntegerArray' object has no attribute 'tolist'
+20220103-100932-AM: INFO [extracto.py:377] inicia fun_extracto
+20220103-100932-AM: INFO [extracto.py:229] inicia proceso de comparacion de extracto
+20220103-100938-AM: INFO [extracto.py:388] inicia fun_cedidos
+20220103-100938-AM: INFO [extracto.py:272] inicia proceso de comparacion de cedidos
+20220103-100938-AM: INFO [extracto.py:276] hago el merge de los depósitos
+20220103-100938-AM: ERROR [extracto.py:282] fallo en proceso fun_cedisos. You are trying to merge on float64 and object columns. If you wish to proceed you should use pd.concat
+20220103-100941-AM: INFO [extracto.py:400] inicia fun_endosados
+20220103-100941-AM: INFO [extracto.py:256] inicia proceso de comparacion de endosos
+20220103-100941-AM: INFO [extracto.py:260] hago el merge de los depósitos
+20220103-100941-AM: INFO [extracto.py:263] lo mando al excel
+20220103-100946-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220103-102007-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-102007-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-102007-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-102008-AM: INFO [extracto.py:347] inicia fun_depositos
+20220103-102008-AM: INFO [extracto.py:149] inicia proceso de comparacion de depositos
+20220103-102008-AM: INFO [extracto.py:152] empiezo a ajustar los datos
+20220103-102008-AM: INFO [extracto.py:166] hago el merge de los depósitos
+20220103-102008-AM: INFO [extracto.py:169] ajusto nuevamente los datos
+20220103-102008-AM: INFO [extracto.py:177] ordeno por fecha de emision
+20220103-102008-AM: INFO [extracto.py:181] lo mando al excel
+20220103-102012-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-102012-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-102017-AM: INFO [extracto.py:367] inicia fun_emitidos
+20220103-102017-AM: INFO [extracto.py:58] inicia proceso de comparacion de echeq emitidos
+20220103-102019-AM: ERROR [extracto.py:89] fallo en proceso fun_emitidos. 'IntegerArray' object has no attribute 'tolist'
+20220103-102023-AM: INFO [extracto.py:377] inicia fun_extracto
+20220103-102023-AM: INFO [extracto.py:229] inicia proceso de comparacion de extracto
+20220103-102028-AM: INFO [extracto.py:388] inicia fun_cedidos
+20220103-102028-AM: INFO [extracto.py:272] inicia proceso de comparacion de cedidos
+20220103-102028-AM: INFO [extracto.py:276] hago el merge de los depósitos
+20220103-102028-AM: ERROR [extracto.py:282] fallo en proceso fun_cedisos. You are trying to merge on float64 and object columns. If you wish to proceed you should use pd.concat
+20220103-102031-AM: INFO [extracto.py:400] inicia fun_endosados
+20220103-102031-AM: INFO [extracto.py:256] inicia proceso de comparacion de endosos
+20220103-102031-AM: INFO [extracto.py:260] hago el merge de los depósitos
+20220103-102031-AM: INFO [extracto.py:263] lo mando al excel
+20220103-102036-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220103-103307-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-103307-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-103307-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-103307-AM: INFO [extracto.py:347] inicia fun_depositos
+20220103-103307-AM: INFO [extracto.py:149] inicia proceso de comparacion de depositos
+20220103-103307-AM: INFO [extracto.py:152] empiezo a ajustar los datos
+20220103-103307-AM: INFO [extracto.py:166] hago el merge de los depósitos
+20220103-103307-AM: INFO [extracto.py:169] ajusto nuevamente los datos
+20220103-103307-AM: INFO [extracto.py:177] ordeno por fecha de emision
+20220103-103307-AM: INFO [extracto.py:181] lo mando al excel
+20220103-103312-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-103312-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-103317-AM: INFO [extracto.py:367] inicia fun_emitidos
+20220103-103317-AM: INFO [extracto.py:58] inicia proceso de comparacion de echeq emitidos
+20220103-103318-AM: ERROR [extracto.py:89] fallo en proceso fun_emitidos. 'IntegerArray' object has no attribute 'tolist'
+20220103-103323-AM: INFO [extracto.py:377] inicia fun_extracto
+20220103-103323-AM: INFO [extracto.py:229] inicia proceso de comparacion de extracto
+20220103-103328-AM: INFO [extracto.py:388] inicia fun_cedidos
+20220103-103328-AM: INFO [extracto.py:272] inicia proceso de comparacion de cedidos
+20220103-103328-AM: INFO [extracto.py:276] hago el merge de los depósitos
+20220103-103328-AM: ERROR [extracto.py:282] fallo en proceso fun_cedisos. You are trying to merge on float64 and object columns. If you wish to proceed you should use pd.concat
+20220103-103331-AM: INFO [extracto.py:400] inicia fun_endosados
+20220103-103331-AM: INFO [extracto.py:256] inicia proceso de comparacion de endosos
+20220103-103331-AM: INFO [extracto.py:260] hago el merge de los depósitos
+20220103-103331-AM: INFO [extracto.py:263] lo mando al excel
+20220103-103336-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220103-103452-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-103452-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-103452-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-103452-AM: INFO [extracto.py:347] inicia fun_depositos
+20220103-103452-AM: INFO [extracto.py:149] inicia proceso de comparacion de depositos
+20220103-103452-AM: INFO [extracto.py:152] empiezo a ajustar los datos
+20220103-103452-AM: INFO [extracto.py:166] hago el merge de los depósitos
+20220103-103452-AM: INFO [extracto.py:169] ajusto nuevamente los datos
+20220103-103452-AM: INFO [extracto.py:177] ordeno por fecha de emision
+20220103-103452-AM: INFO [extracto.py:181] lo mando al excel
+20220103-103457-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-103457-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-103502-AM: INFO [extracto.py:367] inicia fun_emitidos
+20220103-103502-AM: INFO [extracto.py:58] inicia proceso de comparacion de echeq emitidos
+20220103-103503-AM: ERROR [extracto.py:89] fallo en proceso fun_emitidos. 'IntegerArray' object has no attribute 'tolist'
+20220103-103507-AM: INFO [extracto.py:377] inicia fun_extracto
+20220103-103507-AM: INFO [extracto.py:229] inicia proceso de comparacion de extracto
+20220103-103513-AM: INFO [extracto.py:388] inicia fun_cedidos
+20220103-103513-AM: INFO [extracto.py:272] inicia proceso de comparacion de cedidos
+20220103-103513-AM: INFO [extracto.py:276] hago el merge de los depósitos
+20220103-103513-AM: ERROR [extracto.py:282] fallo en proceso fun_cedisos. You are trying to merge on float64 and object columns. If you wish to proceed you should use pd.concat
+20220103-103516-AM: INFO [extracto.py:400] inicia fun_endosados
+20220103-103516-AM: INFO [extracto.py:256] inicia proceso de comparacion de endosos
+20220103-103516-AM: INFO [extracto.py:260] hago el merge de los depósitos
+20220103-103516-AM: INFO [extracto.py:263] lo mando al excel
+20220103-103521-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220103-104453-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-104453-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-104453-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-104453-AM: INFO [extracto.py:347] inicia fun_depositos
+20220103-104453-AM: INFO [extracto.py:149] inicia proceso de comparacion de depositos
+20220103-104453-AM: INFO [extracto.py:152] empiezo a ajustar los datos
+20220103-104453-AM: INFO [extracto.py:166] hago el merge de los depósitos
+20220103-104453-AM: INFO [extracto.py:169] ajusto nuevamente los datos
+20220103-104453-AM: INFO [extracto.py:177] ordeno por fecha de emision
+20220103-104453-AM: INFO [extracto.py:181] lo mando al excel
+20220103-104459-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-104459-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-104504-AM: INFO [extracto.py:367] inicia fun_emitidos
+20220103-104504-AM: INFO [extracto.py:58] inicia proceso de comparacion de echeq emitidos
+20220103-104506-AM: ERROR [extracto.py:89] fallo en proceso fun_emitidos. 'IntegerArray' object has no attribute 'tolist'
+20220103-104510-AM: INFO [extracto.py:377] inicia fun_extracto
+20220103-104510-AM: INFO [extracto.py:229] inicia proceso de comparacion de extracto
+20220103-104516-AM: INFO [extracto.py:388] inicia fun_cedidos
+20220103-104516-AM: INFO [extracto.py:272] inicia proceso de comparacion de cedidos
+20220103-104516-AM: INFO [extracto.py:276] hago el merge de los depósitos
+20220103-104516-AM: ERROR [extracto.py:282] fallo en proceso fun_cedisos. You are trying to merge on float64 and object columns. If you wish to proceed you should use pd.concat
+20220103-104519-AM: INFO [extracto.py:400] inicia fun_endosados
+20220103-104519-AM: INFO [extracto.py:256] inicia proceso de comparacion de endosos
+20220103-104519-AM: INFO [extracto.py:260] hago el merge de los depósitos
+20220103-104519-AM: INFO [extracto.py:263] lo mando al excel
+20220103-104524-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220103-111954-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-111954-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-111954-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-111954-AM: INFO [extracto.py:347] inicia fun_depositos
+20220103-111954-AM: INFO [extracto.py:149] inicia proceso de comparacion de depositos
+20220103-111954-AM: INFO [extracto.py:152] empiezo a ajustar los datos
+20220103-111954-AM: INFO [extracto.py:166] hago el merge de los depósitos
+20220103-111954-AM: INFO [extracto.py:169] ajusto nuevamente los datos
+20220103-111954-AM: INFO [extracto.py:177] ordeno por fecha de emision
+20220103-111954-AM: INFO [extracto.py:181] lo mando al excel
+20220103-111959-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-111959-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-112005-AM: INFO [extracto.py:367] inicia fun_emitidos
+20220103-112005-AM: INFO [extracto.py:58] inicia proceso de comparacion de echeq emitidos
+20220103-112006-AM: ERROR [extracto.py:89] fallo en proceso fun_emitidos. 'IntegerArray' object has no attribute 'tolist'
+20220103-112010-AM: INFO [extracto.py:377] inicia fun_extracto
+20220103-112010-AM: INFO [extracto.py:229] inicia proceso de comparacion de extracto
+20220103-112015-AM: INFO [extracto.py:388] inicia fun_cedidos
+20220103-112015-AM: INFO [extracto.py:272] inicia proceso de comparacion de cedidos
+20220103-112015-AM: INFO [extracto.py:276] hago el merge de los depósitos
+20220103-112015-AM: ERROR [extracto.py:282] fallo en proceso fun_cedisos. You are trying to merge on float64 and object columns. If you wish to proceed you should use pd.concat
+20220103-112018-AM: INFO [extracto.py:400] inicia fun_endosados
+20220103-112018-AM: INFO [extracto.py:256] inicia proceso de comparacion de endosos
+20220103-112018-AM: INFO [extracto.py:260] hago el merge de los depósitos
+20220103-112018-AM: INFO [extracto.py:263] lo mando al excel
+20220103-112023-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220103-023832-PM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220103-023832-PM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220103-023832-PM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220103-023832-PM: INFO [extracto.py:347] inicia fun_depositos
+20220103-023832-PM: INFO [extracto.py:149] inicia proceso de comparacion de depositos
+20220103-023832-PM: INFO [extracto.py:152] empiezo a ajustar los datos
+20220103-023832-PM: INFO [extracto.py:166] hago el merge de los depósitos
+20220103-023832-PM: INFO [extracto.py:169] ajusto nuevamente los datos
+20220103-023832-PM: INFO [extracto.py:177] ordeno por fecha de emision
+20220103-023832-PM: INFO [extracto.py:181] lo mando al excel
+20220103-023836-PM: INFO [extracto.py:357] inicia fun_aceptados
+20220103-023836-PM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220103-023841-PM: INFO [extracto.py:367] inicia fun_emitidos
+20220103-023841-PM: INFO [extracto.py:58] inicia proceso de comparacion de echeq emitidos
+20220103-023843-PM: ERROR [extracto.py:89] fallo en proceso fun_emitidos. 'IntegerArray' object has no attribute 'tolist'
+20220103-023847-PM: INFO [extracto.py:377] inicia fun_extracto
+20220103-023847-PM: INFO [extracto.py:229] inicia proceso de comparacion de extracto
+20220103-023852-PM: INFO [extracto.py:388] inicia fun_cedidos
+20220103-023852-PM: INFO [extracto.py:272] inicia proceso de comparacion de cedidos
+20220103-023852-PM: INFO [extracto.py:276] hago el merge de los depósitos
+20220103-023852-PM: ERROR [extracto.py:282] fallo en proceso fun_cedisos. You are trying to merge on float64 and object columns. If you wish to proceed you should use pd.concat
+20220103-023855-PM: INFO [extracto.py:400] inicia fun_endosados
+20220103-023855-PM: INFO [extracto.py:256] inicia proceso de comparacion de endosos
+20220103-023855-PM: INFO [extracto.py:260] hago el merge de los depósitos
+20220103-023855-PM: INFO [extracto.py:263] lo mando al excel
+20220103-023900-PM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato
+20220118-103212-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220118-103212-AM: INFO [extracto.py:295] no existe el archivo 18-01-2022-eCheqs-deposito.xls
+20220118-103212-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220118-103212-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220118-103303-AM: INFO [extracto.py:289] inicia proceso de chequeo de existencia de archivos
+20220118-103303-AM: INFO [extracto.py:295] no existe el archivo 18-01-2022-eCheqs-deposito.xls
+20220118-103303-AM: INFO [extracto.py:333] abre libro banco en BancoFrances.xlsx
+20220118-103303-AM: INFO [extracto.py:339] inicia proceso de conversion de datos para unificar tipos
+20220118-103303-AM: INFO [extracto.py:357] inicia fun_aceptados
+20220118-103303-AM: INFO [extracto.py:99] inicia proceso de comparacion de echeq aceptados
+20220118-103308-AM: INFO [extracto.py:367] inicia fun_emitidos
+20220118-103308-AM: INFO [extracto.py:58] inicia proceso de comparacion de echeq emitidos
+20220118-103309-AM: ERROR [extracto.py:89] fallo en proceso fun_emitidos. 'IntegerArray' object has no attribute 'tolist'
+20220118-103312-AM: INFO [extracto.py:377] inicia fun_extracto
+20220118-103312-AM: INFO [extracto.py:229] inicia proceso de comparacion de extracto
+20220118-103318-AM: INFO [extracto.py:388] inicia fun_cedidos
+20220118-103318-AM: INFO [extracto.py:272] inicia proceso de comparacion de cedidos
+20220118-103318-AM: INFO [extracto.py:276] hago el merge de los depósitos
+20220118-103318-AM: ERROR [extracto.py:282] fallo en proceso fun_cedisos. You are trying to merge on float64 and object columns. If you wish to proceed you should use pd.concat
+20220118-103321-AM: INFO [extracto.py:400] inicia fun_endosados
+20220118-103321-AM: INFO [extracto.py:256] inicia proceso de comparacion de endosos
+20220118-103321-AM: INFO [extracto.py:260] hago el merge de los depósitos
+20220118-103321-AM: INFO [extracto.py:263] lo mando al excel
+20220118-103326-AM: INFO [extracto.py:405] carga en openpyxl el archivo de banco para darle formato

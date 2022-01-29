@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+    inventario:
+        image: 
+          fayu666/inventario
+        ports: 
+          - "5555:5555"
+        volumes:
+          - /media/trabajo/Trabajo/Administracion/Stock.db:/inventario/bd/Stock.db

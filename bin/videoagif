@@ -1,0 +1,22 @@
+#! /bin/bash
+### CONVERTIR VIDEO A GIF
+### ffmpeg -t <duration> -ss <starting position in hh:mm:ss format> -i <input_video> out%04d.gif
+#ffmpeg -t 1 -ss 00:00:06 -i gopr0045.mp4 -vf scale=iw*.5:ih*.5  output.gif         # el .5 es la proporcion de reduccion/ampliacion. poner 1.0 para que quede igual
+### convert -delay <ticks>x<ticks-per-second> -loop 0 out*gif <output-gif-file>
+#convert -delay 1x30 -loop 0 output.gif animacion-de-video.gif
+### LO OPTIMIZA PARA REDUCIRLO DE TAMAÑO
+###convert -layers Optimize animacion.gif animacion_small.gif
+
+###### opciones para -vf scale
+# scale=320:-1     reduce proporcionalmente al tamaño de 320 
+# scale=iw*.5:ih*.5    reduce al 50% o el .x que le pongas. 1 mantiene tamaño
+
+
+#set -x
+########### 	opcion 2     #############
+mkdir frames
+VIDEO=$1
+#VIDEO=gopr0045.mp4
+ffmpeg -i $VIDEO -vf scale=320:-1:flags=lanczos,fps=10 frames/ffout%03d.png
+convert -loop 0 frames/ffout*.png $(basename "$VIDEO" | cut -d. -f1).gif
+rm -dR frames

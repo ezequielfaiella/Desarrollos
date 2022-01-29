@@ -1,0 +1,28 @@
+#! /bin/bash
+# set -x -v
+# sudo umount /media/audio
+# sudo fusermount -u /media/trabajo
+
+FUENTE=~/fuente.sh
+if [ -f $FUENTE ]; then
+	source $FUENTE
+else
+	DISPLAY=:0 gdialog --msgbox "No se encuentra el archivo fuente en el HOME"
+	echo "No se encuentra el archivo fuente en el HOME"
+	exit
+fi
+
+# esto busca el proceso x, lo filtra y obtiene su pid, luego lo mata
+#~ pkill inotifywait
+ps waux | grep conversion | grep -v grep | awk '{print $2}' | xargs kill 2> /dev/null
+ps waux | grep correos | grep -v grep | awk '{print $2}' | xargs kill 2> /dev/null
+ps waux | grep facturas | grep -v grep | awk '{print $2}' | xargs kill 2> /dev/null
+#~ # sudo umount /media/trabajo/
+sudo umount ${DIRTRABAJO1}
+
+
+
+#~ fusermount -u ${DIRTRABAJO2}
+
+rmdir ${DIRTRABAJO2}
+rm /media/trabajo/Trabajo

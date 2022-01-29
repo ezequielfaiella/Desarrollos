@@ -1,0 +1,103 @@
+#!/usr/bin/phyton3
+# -*- coding: utf
+# 
+# crea el ejecutable
+# pyinstaller --onefile --add-binary '/usr/bin/chromedriver:./' gooddolar.py
+# requisitos
+# python3 -m pip install selenium
+# sudo apt install chromium-chromedriver
+
+from selenium import webdriver
+from time import sleep
+import os
+import random
+from selenium.webdriver.chrome.options import Options
+import sys
+
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+
+
+# sudo apt-get install firefox-geckodriver
+#
+url="https://www.epicgames.com/store/es-ES/free-games"
+
+def enviomensajetelegram(mensaje):
+    # curl -s -X POST "https://api.telegram.org/bot802999301:AAFqDz2EMeyO0D8EtAP4AZkhfLuIGiqC3LQ/sendMessage" -d chat_id=11729976 -d text="prueba1"
+    TOKEN="1482304462:AAHb90LEHoA5qiD9n0UUA_1s8AtEJTWS7U4"
+    ID="11729976" # ezequiel
+    URLT="https://api.telegram.org/bot"+TOKEN+"/sendMessage"
+    
+    comando = f"curl -s -X POST {URLT} -d chat_id={ID} -d text='{mensaje}'"
+    
+    os.system(comando)
+
+def enviofototelegram(archivo):
+    # curl -X  POST "https://api.telegram.org/bot"<TOKEN>"/sendPhoto" -F chat_id="<ID>" -F photo="@<RUTA DE NUESTRA IMAGEN>"
+    TOKEN="1482304462:AAHb90LEHoA5qiD9n0UUA_1s8AtEJTWS7U4"
+    ID="11729976" # ezequiel
+    URLT="https://api.telegram.org/bot"+TOKEN+"/sendPhoto"
+    
+    comando = "curl -X POST "+URLT+" -F chat_id="+ID+" -F photo=@"+archivo
+    
+    os.system(comando)
+
+
+class Google:
+
+    def __init__(self, username, password):
+        # ejecutable=os.path.join(sys._MEIPASS+'/chromedriver')
+        # ejecutable=resource_path(os.path.dirname(os.path.abspath(__file__))) + '/chromedriver')
+        chrome_options = Options()
+        # chrome_options.add_argument("--headless")
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-gpu')
+        # self.driver = webdriver.Chrome(executable_path=os.path.join(sys._MEIPASS+'/chromedriver'),options=chrome_options)
+        self.driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver',options=chrome_options)
+        self.driver.get('https://stackoverflow.com/users/signup?ssrc=head&returnurl=%2fusers%2fstory%2fcurrent%27')
+        sleep(3)
+        self.driver.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
+        self.driver.find_element_by_xpath('//input[@type="email"]').send_keys(username)
+        self.driver.find_element_by_xpath('//*[@id="identifierNext"]').click()
+        sleep(3)
+        self.driver.find_element_by_xpath('//input[@type="password"]').send_keys(password)
+        self.driver.find_element_by_xpath('//*[@id="passwordNext"]').click()
+        sleep(2)
+        self.driver.get(url)
+        # click en iniciar sesion
+        self.driver.find_element_by_xpath("//span[@class='sign-text item-label display-name text-color']").click()
+        sleep(2)
+        self.driver.find_element_by_xpath('/html/body/div/div/div/div/div/div[2]/div/div[2]/ul/div[3]/div[2]/span/h6').click()
+        sleep(10)
+        # self.driver.find_element_by_xpath('//*[@id="dieselReactWrapper"]/div/div[4]/main/div[2]/div[3]/div/div/div/div[2]/div/div/section/div/div[1]/div/div/a/div/div/div[1]/div[2]/div/div').click()
+        self.driver.find_element_by_xpath('//span[normalize-space()="Gratis ahora"]').click()
+        sleep(5)
+        try:
+            # self.driver.find_element_by_xpath('//*[@id="dieselReactWrapper"]/div/div[4]/main/div/div[3]/div[2]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div/button').click()
+            self.driver.find_element_by_xpath('//button[@class="css-zyz3yg"]').click()
+            sleep(15)
+            self.driver.find_element_by_xpath('//*[@id="purchase-app"]/div/div[4]/div[1]/div[2]/div[5]/div/div/button/span').click()
+            # self.driver.find_element_by_xpath('/html/body/div[1]/div/div[4]/main/div/div[3]/div[2]/div/div[2]/div[2]/div/div/div[3]/div/div/div/div[3]/div/div/button/span').click()
+            sleep(5)
+                
+            self.driver.save_screenshot("/tmp/screenshot.png")
+            enviofototelegram("/tmp/screenshot.png")
+            os.system('rm /tmp/screenshot.png')
+            self.driver.close() 
+              
+        except:
+            # print("ya lo tengo")
+            error = "Fallo al obtener el juego. Ya lo tengo."
+            enviomensajetelegram(error)
+            # self.driver.close() 
+            # exit()
+        sleep(15)
+
+
+username = 'ezequielfaiella'
+password = 'fayu4519'
+Google(username, password)
+

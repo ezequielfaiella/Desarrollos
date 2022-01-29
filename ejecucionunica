@@ -1,0 +1,38 @@
+############################################################
+# AGREGAR ESTO AL INICIO DEL SCRIPT QUE SE QUIERE BLOQUEAR #
+# LO QUE USA EL AL FUNCION FLOCK DE LINUX PARA GUARDAR EL  #
+# PID DEL SCRIPT Y CUANDO VUELVE A EJECUTARSE REVISA SI YA #
+# ESTA EN USO, Y SI ES ASI NO DEJA EJECUTAR NUEVAMENTE     #
+############################################################
+
+
+set -e
+scriptname=$(basename $0)
+# UBICACION DEL ARCHIVO DENDE SE GUARDARA EL PID PARA BLOQUEARLO
+pidfile="/media/trabajo/Trabajo/scripts/lab/${scriptname}.pid"
+# lock it
+exec 200> $pidfile
+flock -n 200 || exit 1
+pid=$$
+echo $pid 1>&200
+
+
+#   Line 8 opens a file handle with ID 200 on $pidfile
+#   Line 9 uses flock to lock file handle with ID 200 with exclusive access. 
+#   The parameter -n means  “Fail (with an exit code of 1) rather than wait 
+#   if the lock cannot be immediately acquired”. This is catched by the two 
+#   pipes (or operation) and will exit if the lock fails, f.e. if the handle
+#   is already locked
+#   Line 10 writes the PID to the file handle
+
+
+#########################################################################
+OTRA FORMA MAS SIMPLE
+#########################################################################
+
+(
+    flock -n 200 || exit 1;
+    echo "locked"
+    exec /media/trabajo/Trabajo/scripts/lab/recibir_de_ediwin_asp.sh
+) 200>/media/trabajo/Trabajo/scripts/lab/recibir_de_ediwin_asp.sh.pid
+

@@ -1,0 +1,28 @@
+para montar las unidades al inicio poner en /etc/rc.local
+
+sudo mount -t cifs -o username=admin,password=ironmaiden,uid=ezequiel,gid=users //192.168.1.6/Trabajo /media/trabajo
+sudo mount -t cifs -o username=ezequiel,password=123,uid=ezequiel,gid=users //192.168.1.6/Audio /media/audio
+
+
+antes hay q editar sudoers
+
+export EDITOR=mousepad && sudo -E visudo
+
+y agregar al final
+
+ezequiel ALL=NOPASSWD: /bin/mount
+ezequiel ALL=NOPASSWD: /bin/umount
+
+____________________________________________
+
+*/5 * * * * /usr/bin/timeout -s 9 200 /media/trabajo/Trabajo/scripts/recibir_de_ediwin_asp.sh
+
+agregar eso a 
+crontab -e
+para q baje cada 5 min los pedidos
+
+
+poner en /usr/bin/ el archivo weme
+
+
+liberar de la configuracion ssh y sshd el X11 forward y sacar el #

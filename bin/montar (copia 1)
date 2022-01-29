@@ -1,0 +1,104 @@
+#! /bin/bash
+#sudo sysctl vm.swappiness=10
+#~ set -x
+#~ sudo mount -t cifs -o username=ezequiel,password=30363864,uid=$USER,gid=users //192.168.2.6/Trabajo /media/trabajo
+#~ echo 30363864 | sshfs ezequiel@192.168.2.6:/mnt/disk1/Trabajo /media/trabajo -o password_stdin -oworkaround=rename
+#~ sshfs ezequiel@192.168.2.6:/mnt/disk1/Trabajo /media/trabajo -oworkaround=rename
+
+#sshfs -p77 administracion@192.168.2.3:/media/sda3/Trabajo /media/trabajo/Trabajo -oworkaround=rename # -o ro    #agrega modo solo lectura
+#sshfs -p77 administracion@wemedata.no-ip.info:/media/sda3/Trabajo /media/trabajo/Trabajo -oworkaround=rename
+
+FUENTE=~/fuente.sh
+if [ -f $FUENTE ]; then
+	source $FUENTE
+else
+	DISPLAY=:0 gdialog --msgbox "No se encuentra el archivo fuente en el HOME"
+	#~ echo "No se encuentra el archivo fuente en el HOME"
+	exit
+fi
+
+monitoreo () {
+if ps waux | grep -v grep | grep correos
+then
+		notify-send "El correo ya se esta monitoreando"
+else
+		notify-send "El correo NO se esta monitoreando"
+		correos &
+fi
+
+#~ if ps waux | grep -v grep | grep facturas
+#~ then
+		#~ notify-send "La facturacion ya se esta monitoreando"
+#~ else
+		#~ notify-send "La facturacion NO se esta monitoreando"
+		#~ facturas &
+#~ fi
+
+if ps waux | grep -v grep | grep conversion
+then
+		notify-send "La conversion ya se esta monitoreando"
+else
+		notify-send "La conversion NO se esta monitoreando"
+		conversion &
+fi
+exit
+sleep 3
+}
+
+
+# host para sacar la ip de wemeserver......
+# esto te guarda en ip.txt la ip
+#host wemeserver.no-ip.info | cut  -c 34-48 >> ip.txt
+# te da la mac de 192.168.1.1
+# /usr/sbin/arp -a | grep "192.168.2.1" | cut -c 20-36 >> /home/ezequiel/Escritorio/mac.txt
+
+
+
+Directorio=${DIRTRABAJO2}
+if [ ! -d $Directorio ]; then
+echo “No existe $Directorio”
+echo “Creando -> $Directorio
+mkdir -pv $Directorio
+else
+echo "El Directorio $Directorio ya existe"
+fi
+
+
+
+MAC=$(/usr/sbin/arp -a | grep "192.168.2.1" | awk '{print $4}')
+#~ case $MAC in
+	#~ 08:7a:4c:0e:33:cb)
+				#~ sshfs -p77 -o uid=1000 -o gid=1000 administracion@wemedata.no-ip.info:/media/administracion/FDD1-2B4A/Trabajo /media/trabajo/Trabajo -oworkaround=rename 
+				#~ #monitoreo
+				#~ notify-send "Estas Conectado desde Casa"
+			#~ ;;
+	#~ c8:b3:73:3e:80:fb)
+				#~ sshfs -p77 -o uid=1000 -o gid=1000 administracion@192.168.2.3:/media/administracion/FDD1-2B4A/Trabajo /media/trabajo/Trabajo -oworkaround=rename
+				$LOCAL_COMPLETO
+				#~ monitoreo
+				if [ $? -eq 0 ]; then
+					if [ "$1" != "s" ]; then
+						monitoreo
+					fi
+				fi
+				#~ notify-send "Estas Conectado desde Fabrica"
+			#~ ;;
+	#~ *)
+				#~ sshfs -p77 -o uid=1000 -o gid=1000 administracion@wemedata.no-ip.info:/media/administracion/FDD1-2B4A/Trabajo /media/trabajo/Trabajo -oworkaround=rename 
+				#~ #monitoreo
+				#~ notify-send "No se donde estas"
+			#~ ;;
+#~ esac
+
+#~ sshfs -p77 -o uid=1000 -o gid=1000 administracion@192.168.2.3:/media/sda3/Trabajo /media/trabajo/Trabajo -oworkaround=rename
+#~ sudo mount -t cifs -o username=administracion,password=123,uid=$USER,gid=users //192.168.2.3/media/sda3/Trabajo /media/trabajo
+
+
+
+#sudo mount -t cifs -o username=ezequiel,password=30363864,uid=ezequiel,gid=users,nounix,iocharset=utf8,rw //192.168.2.6/Trabajo /media/trabajo # NO PONER NOEXEC PORQUE DA ERROR
+# sudo mount -t cifs -o credentials=~/.smbcredentials,uid=ezequiel,gid=users //192.168.2.6/Trabajo /media/trabajo
+# sudo mount -t cifs -o username=admin,password=ironmaiden,uid=ezequiel,gid=users //192.168.2.6/Audio /media/audio
+### sshfs ezequiel@192.168.2.6:/mnt/disk1/Trabajo /media/trabajo
+#    sshfs ezequiel@192.168.2.6:/mnt/disk1/Audio /media/audio
+# sshfs admin@wemedata.no-ip.info:/mnt/disk1/Trabajo /media/trabajo
+#sudo curlftpfs ftp://admin:ironmaiden@wemedata.no-ip.info:21/disk1/Trabajo /media/trabajo

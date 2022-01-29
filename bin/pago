@@ -1,0 +1,62 @@
+#!/bin/bash
+#~ set -x
+PAGO=$(basename "$1" | cut -d. -f1)
+pdftotext -layout $1 $PAGO.txt
+tr ' ' ',' < $PAGO.txt > $PAGO.csv
+sed -i '/^\s*$/d' $PAGO.csv					# borra lineas vacioas
+sed -i 's/^,,,,//' $PAGO.csv				# borra los que empiezan con 4 ,
+sed -i 's/,*,/,/g' $PAGO.csv				# reemplaza muchas , por una sola
+sed -i 's/^,//g' $PAGO.csv					# borra la , al inicio
+
+######## formato basico. ahora sigue con eliminar lineas en particular
+
+sed -i '/Id,de,impuesto:/d' $PAGO.csv
+#~ sed -i '/Nombre/d' $PAGO.csv
+sed -i '/Descripción/d' $PAGO.csv
+sed -i '/Información,complementaria:/d' $PAGO.csv
+sed -i '/WEME/d' $PAGO.csv
+sed -i '/Retenciones,Impositivas/d' $PAGO.csv
+sed -i '/DOMICILIO/d' $PAGO.csv
+sed -i '/Estado/d' $PAGO.csv
+sed -i '/TOTAL,RETENCION/d' $PAGO.csv
+sed -i 's/^1870$//' $PAGO.csv
+sed -i '/RETENIDO/d' $PAGO.csv
+sed -i '/RETENCION/d' $PAGO.csv
+sed -i '/C.U.I.T./d' $PAGO.csv
+sed -i 's/Nombre,de,la,Empresa:,INC,S.A.,//g' $PAGO.csv
+sed -i 's/Fecha,de,Cobro:,/Fecha de Cobro: /g' $PAGO.csv
+sed -i 's/Nro.,Transacción:,/Numero de Cheque: /g' $PAGO.csv
+sed -i 's/Fecha,de,Vto/Fecha de Vto/g' $PAGO.csv
+sed -i 's/:,/:/g' $PAGO.csv
+sed -i 's/TOTAL,PAGO/TOTAL PAGO/g' $PAGO.csv
+sed -i 's/,Sucursal:CASA,CENTRAL//g' $PAGO.csv
+sed -i '/DETALLE/d' $PAGO.csv
+sed -i 's/,Referencia:/\nReferencia:/g' $PAGO.csv
+sed -i 's/,Fecha de Vto:/\nFecha de Vto:/g' $PAGO.csv
+sed -i 's/Moneda:ARS,//g' $PAGO.csv
+
+############ formato a una columna y numeros
+sed -i 's/\([[:upper:]]\{5\}\)\([[:digit:]]\{4\}\)/\1,\2/g' $PAGO.csv # busca el patron AAAAA1231231 y lo cambia por AAAAA,123123
+sed -i 's/,/\n/3' $PAGO.csv
+sed -i '6d' $PAGO.csv					# borra la linea 
+sed -i '7d' $PAGO.csv					# borra la linea 
+sed -i '5 s/,/./' $PAGO.csv
+sed -i '5 s/:/:,/' $PAGO.csv
+sed -i '5 s/,CAJERO//' $PAGO.csv
+
+
+
+
+#~ sed -i '/BASE,IMPONIBLE/d' $PAGO.csv
+#~ sed -i '/NRO.COMPR/d' $PAGO.csv
+#~ sed -i '/INC,S.A./d' $PAGO.csv
+#~ sed -i '/DATOS,DE/d' $PAGO.csv
+
+#~ sed -i '1d' $PAGO.csv
+#~ ################################
+#~ NUMERO=$(head -3 $PAGO.csv | cut -d: -f2)# | cut -c 1-10)
+NUMERO=$(sed '/Referencia/!d' $PAGO.csv | cut -d: -f2) # | cut -c 1-10)
+mv $PAGO.csv $NUMERO.csv
+rm $PAGO.txt
+rm $1
+

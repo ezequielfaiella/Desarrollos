@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Panel de Comandos
+Version=v0.8.5
+Icon=/media/trabajo/Trabajo/scripts/icons/pedidos.png
+X-Icon-Path=deploy_player
+Exec=python3 /media/trabajo/Trabajo/scripts/botonera.py
+Terminal=false
+Type=Application

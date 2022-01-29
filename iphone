@@ -1,0 +1,85 @@
+#!/bin/bash
+#~ set -x
+instalar() {
+#Install development packages
+sudo apt remove --purge -y libusbmuxd4
+sudo apt-get install -y automake libtool pkg-config libplist-dev libplist++-dev python-dev libssl-dev libusb-1.0-0-dev libfuse-dev # xfce4-power-manager* xfce4-power-manager-plugins*
+sudo -k
+
+cat <<EOF >> .bashrc
+
+[ ! -d "$HOME/.iphone_src" ] && mkdir -p "$HOME/.iphone_src"
+export PKG_CONFIG_PATH="${HOME}/.iphone_src/lib/pkgconfig:${PKG_CONFIG_PATH}"
+export CPATH="${HOME}/.iphone_src/include:${CPATH}"
+
+export MANPATH="${HOME}/.iphone_src/share/man:${MANPATH}"
+
+export PATH="${HOME}/.iphone_src/bin:${PATH}"
+export LD_LIBRARY_PATH="${HOME}/.iphone_src/lib:${LD_LIBRARY_PATH}"
+EOF
+
+source ~/.bashrc
+
+#Clone the sources.
+mkdir -p ~/.iphone_src
+cd ~/.iphone_src
+for x in libusbmuxd usbmuxd libimobiledevice ifuse; do git clone https://github.com/libimobiledevice/${x}.git;done
+
+#Build libusbmuxd
+cd ~/.iphone_src/libusbmuxd
+./autogen.sh --prefix="$HOME/.iphone_src"
+make && make install
+
+#Build libimobiledevice
+cd ~/.iphone_src/libimobiledevice
+./autogen.sh --prefix="$HOME/.iphone_src"
+make && make install
+
+#Build usbmuxd
+cd ~/.iphone_src/usbmuxd
+./autogen.sh --prefix="$HOME/.iphone_src"
+make && sudo make install
+sudo -k #remueve permisos de root
+
+#Build ifuse
+cd ~/.iphone_src/ifuse
+./autogen.sh --prefix="$HOME/.iphone_src"
+make && make install
+
+mkdir -p ~/Iphone
+
+type -p ifuse
+
+type -p idevicepair
+
+idevicepair pair
+
+}
+
+montar(){
+ifuse ~/Iphone
+}
+
+desmontar(){
+fusermount -u ~/Iphone
+}
+
+bold=$(tput bold)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+
+if [ "$1" = "instalar" ]; then
+	instalar
+fi
+if [ "$1" = "montar" ]; then
+	montar
+	echo -e $bold$green"Iphone Montado en ~/Iphone" $reset
+fi
+if [ "$1" = "desmontar" ]; then
+	desmontar
+	echo -e $bold$green"Iphone Desmontado" $reset
+fi
+if [ "$1" = "" ]; then
+	echo -e $bold$green"Debes poner instalar, montar o desmontar" $reset
+	exit
+fi

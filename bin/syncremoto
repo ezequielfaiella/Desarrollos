@@ -1,0 +1,143 @@
+#! /bin/bash
+
+# -a : Esta opción combina el parámetro -r para que el recorra toda la estructura de directorios que le indiquemos, el -l para que copie enlaces
+# simbólicos como enlaces simbólicos, la -p para que mantenga los permisos, la -t para que se mantenga la hora del fichero, la -g para que se
+# mantenga el grupo, la -o para que se mantenga el propietario, la -D para que se mantengan los ficheros de dispositivo (sólo para root). Ni se
+# mantienen los hard links (-H) ni las ACLs (-A) por defecto. En definitiva, con la opción -a obtenemos una copia exacta de una jerarquía de 
+# ficheros y directorios.
+#
+# -v: es para que nos muestre información más detallada sobre lo que hace
+#
+# -W: copia archivo completo, no solo los cambios del mismo
+#
+# -z: comprime
+#
+# Efectivamente, /path/foo significa “el directorio foo“, mientras que /path/foo/ significa “lo que hay dentro de foo“. 
+#
+# --delete: En muchos casos, es posible que hayamos borrados ficheros de origen que ya no queremos que aparezcan en el destino, pero por defecto 
+# rsync no los elimina. Para que lo haga, debemos usar la opción
+#
+# -n/--dry-run: para que el comando no haga nada en realidad y así podamos depurar el comando antes de ponerlo en funcionamiento definitivamente
+#
+# -u, para que no se sobreescriban los ficheros del destino que son más recientes que los del origen
+#
+# -r la sincronización se realizará recursivamente, haciendo un recorrido del origen y creando los subdirectorios necesarios en el destino
+#
+#
+#NOTA IMPORTANTE de SINTAXIS de RSYNC: Cuando una ruta de directorio tiene un espacio en blanco, en la terminal escribimos
+#
+#$ cd directorio\ con\ espacios
+#   usar la primera vez para crear los directorios
+#
+#cd /media
+#sudo mkdir sync
+#sudo chown ezequiel sync
+#sudo chmod 0777 sync
+
+/media/ezequiel/7F1516CF5BCD5183/bckptrabajo/Trabajo/scripts/.git/
+
+# set -e					# es para controlar los errores. al primer error se detiene y termina el script
+ #~ set -x					# escribe el comando que va a ejecutar
+#sudo umount /media/trabajo
+
+#~ exec >& >(tee -a /tmp/debog-install-depot-multisystem.txt)  ######## analizar para log!!!!!!!!!!!!!!
+
+sincronizar() {
+	#~ sshfs -p77 administracion@192.168.2.3:/media/administracion/FDD1-2B4A/Trabajo /media/trabajo/Trabajo -oworkaround=rename -o ro
+	sshfs -p77 administracion@wemedata.no-ip.info:/media/administracion/FDD1-2B4A/Trabajo /media/trabajo/Trabajo -oworkaround=rename -o ro
+if [ "$?" = "0" ]; then
+	echo "SINCRONIZANDO EN DISCO"
+	#~ rsync -avzuh --no-whole-file --delete --exclude '.Trash-1000/' /media/trabajo/Trabajo /home/ezequiel/Documentos/bckptrabajo #--progress
+	rsync -avzuh --no-whole-file --delete --exclude '.Trash-1000/' /media/trabajo/Trabajo /home/ezequiel/Documentos/bckptrabajo #--progress
+	if [ $? -ne 0 ]; then
+	echo "No se pudo Sincronizar Trabajo en Disco local"
+	fi
+
+	USB="/media/ezequiel/43C4E4D75A742EEE/"
+	if [ -d $USB/bckptrabajo ]; then
+		echo "SINCRONIZANDO EN DISCO EXTERNO"
+		rsync -avzuh --no-whole-file --delete --progress --exclude '.Trash-1000/' --exclude 'Trabajo/scripts/.git/' /media/trabajo/Trabajo $USB/bckptrabajo
+		if [ $? -ne 0 ]; then
+		echo "No se pudo Sincronizar al DISCO EXTERNO"
+		#~ DISPLAY=:0 gdialog --msgbox "No se pudo Sincronizar al DISCO EXTERNO"
+		fi
+	else
+		echo "No se pudo Sincronizar al DISCO EXTERNO (NO MONTADO)"
+		#~ DISPLAY=:0 gdialog --msgbox "No se pudo Sincronizar al DISCO EXTERNO (NO MONTADO)"		
+	fi
+	
+		PENDRIVE="/media/ezequiel/7F1516CF5BCD5183/"
+	if [ -d $PENDRIVE/bckptrabajo ]; then
+		echo "SINCRONIZANDO EN PENDRIVE"
+		rsync -avzuh --no-whole-file --delete --progress --exclude '.Trash-1000/' --exclude 'Trabajo/scripts/.git/' /media/trabajo/Trabajo $PENDRIVE/bckptrabajo
+		if [ $? -ne 0 ]; then
+		echo "No se pudo Sincronizar al Pendrive"
+		#~ DISPLAY=:0 gdialog --msgbox "No se pudo Sincronizar al Pendrive"
+		fi
+	else
+		echo "No se pudo Sincronizar al Pendrive (NO MONTADO)"
+		#~ DISPLAY=:0 gdialog --msgbox "No se pudo Sincronizar al Pendrive (NO MONTADO)"		
+	fi
+	
+		IPHONE="/home/ezequiel/Iphone/Downloads"
+	if [ -d $IPHONE/bckptrabajo ]; then
+		echo "SINCRONIZANDO EN IPHONE"
+		rsync -avuh --no-whole-file --delete --progress --exclude '.Trash-1000/' --exclude 'Trabajo/scripts/.git/' /media/trabajo/Trabajo $IPHONE/bckptrabajo
+		if [ $? -ne 0 ]; then
+		echo "No se pudo Sincronizar al IPHONE"
+		#~ DISPLAY=:0 gdialog --msgbox "No se pudo Sincronizar al IPHONE"
+		fi
+	else
+		echo "No se pudo Sincronizar al IPHONE (NO MONTADO)"
+		#~ DISPLAY=:0 gdialog --msgbox "No se pudo Sincronizar al IPHONE (NO MONTADO)"		
+	fi
+	
+	fusermount -u /media/trabajo/Trabajo
+	if [ $? -ne 0 ]; then
+	echo "No se pudo Desmontar Sync"
+	DISPLAY=:0 gdialog --msgbox "No se pudo Desmontar Sync"
+	fi
+
+else
+	echo "No se pudo Montar Sync"
+		DISPLAY=:0 gdialog --msgbox "No se pudo Montar Sync"
+fi
+
+DISPLAY=:0 gdialog --msgbox "SINCRONIZACION LOCAL EJECUTADA"
+#~ espeak -ves+f2 -s150 -p80 "SINCRONIZACION LOCAL EJECUTADA"
+}
+
+log_file="/home/ezequiel/sync.logfile"
+exec &> >(tee "$log_file")
+
+
+#~ exec 1>~/sync.logfile 2>&1 
+
+echo "********************************************"
+date +"%A %F %R"
+
+#~ fusermount -u /media/sync
+
+#~ sudo mount -t cifs -o username=backup,password=666,uid=ezequiel,gid=users //192.168.2.3/Trabajo /media/sync
+
+ESTADO=
+if [ -d /media/trabajo/Trabajo/Administracion/ ];
+then
+#~ "Sí, sí existe."
+ESTADO=0
+else
+#~ "No, no existe"
+ESTADO=1
+fi
+#~ echo $ESTADO
+
+case $ESTADO in
+		0) fusermount -u /media/trabajo/Trabajo
+			sincronizar
+			sshfs -p77 administracion@192.168.2.3:/media/sda3/Trabajo /media/trabajo/Trabajo -oworkaround=rename
+			;;
+			
+		1) sincronizar
+			;;
+esac
+exit

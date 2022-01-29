@@ -1,0 +1,90 @@
+#!/bin/bash
+set -xv
+DIR="{HOME}/PDF"
+# CREA EL SCRIPT QUE CONTIENE EL RENOMBRADO
+echo '#!/bin/bash'>> /tmp/cups-pdf-renamer
+echo '#FILENAME=`basename $1`'>> /tmp/cups-pdf-renamer
+echo 'NOMBRE=`basename $1`'>> /tmp/cups-pdf-renamer
+echo 'FILENAME=` echo "$NOMBRE" | cut -d'.' -f1`'>> /tmp/cups-pdf-renamer
+echo 'DIRNAME=`dirname $1`'>> /tmp/cups-pdf-renamer
+echo 'DATE=`date +"%Y%m%d_%H%M%S"`'>> /tmp/cups-pdf-renamer
+echo 'mv $1 $DIRNAME"/"$FILENAME-$DATE".pdf"'>> /tmp/cups-pdf-renamer
+echo 'for FILE in /home/$user/PDF/FA* ; do NEWFILE2=`echo ${FILE:0:22}` ; mv $FILE $NEWFILE2 ; done'>> /tmp/cups-pdf-renamer
+echo 'for FILE in FA* ; do mv $FILE $FILE.pdf ; done'>> /tmp/cups-pdf-renamer
+
+# LO MUEVE A LA CARPETA CORRESPONDIENTE Y LE DA PERMISOS
+sudo mv /tmp/cups-pdf-renamer /usr/local/bin
+sudo chmod 755 /usr/local/bin/cups-pdf-renamer
+
+# ADAPTA EL ARCHIVO DE CONFIGURACION PARA QUE USE EL RENOMBRADOR Y CREA BACKUP
+sudo cp /etc/cups/cups-pdf.conf /etc/cups/cups-pdf.conf.original
+sudo cp /etc/apparmor.d/usr.sbin.cupsd /etc/apparmor.d/usr.sbin.cupsd.original
+#sudo sed -i "/cadena_a_buscar/cadena_nueva/g" fichero
+sudo sed -i "/#Label 0/Label 2/g" /etc/cups/cups-pdf.conf
+sudo sed -i "s%#PostProcessing%PostProcessing /usr/local/bin/cups-pdf-renamer%g" /etc/cups/cups-pdf.conf
+sudo sed -i "s%Out ${HOME}/PDF%Out $DIR%g" /etc/cups/cups-pdf.conf
+sudo sed -i "s%@{HOME}/PDF/%@$DIR/%g" /etc/apparmor.d/usr.sbin.cupsd
+sudo sed -i '$i /usr/local/bin/cups-pdf-renamer uxr,' /etc/apparmor.d/usr.sbin.cupsd
+sudo invoke-rc.d apparmor reload
+sudo /etc/init.d/cups restart
+
+# Configure output settings
+
+    # vi /etc/cups/cups-pdf.conf
+
+# To change the folder where generated PDF folders are created, edit the
+# line "Out ${HOME}/PDF" to whatever you like.
+
+# CUPS-PDF doesn't allow you to change the name of the resulting file,
+# so if you want to customize the filename, use the built-in post-processing
+# option. Still in cups-pdf.conf, uncomment "PostProcessing" and set it
+# to "/usr/local/bin/cups-pdf-renamer".
+
+
+# PARA QUE FUNCIONE EN OTRO DIRECTORIO Y CAMBIO DE NOMBRE HAY Q AUTORIZARLO EN APPARMOR Y REINICIAR TODO
+#	gksudo gedit /etc/apparmor.d/usr.sbin.cupsd
+#	OTRO DIRECTORIO
+#	Find the lines
+#	Code:
+#
+# @{HOME}/PDF/ w,
+# @{HOME}/PDF/* w,
+#
+#	which are located at the end of the file. Change them to:
+# Code:
+#
+# @{HOME}/Desktop/ w,
+# @{HOME}/Desktop/* w,
+#
+# PARA EL RENOMBRADO, AGREGAR ANTES DEL ULTIMO }
+#	/usr/local/bin/cups-pdf-renamer uxr,
+#
+# Save again and close.
+#
+#	4. Use the following command to reload apparmor daemon (= background service):
+#	Code:
+#
+#	sudo invoke-rc.d apparmor reload
+# sudo /etc/init.d/cups restart
+
+# nueva version para wine 3
+:'
+#!/bin/bash
+FILENAME=`basename $1`
+NOMBRE=`basename $1`
+#~ FILENAME=` echo "$NOMBRE" | cut -d. -f1`
+FILENAME=` echo "$FILENAME" | cut -d. -f1`
+echo $FILENAME > /tmp/pdf.txt
+#~ DIRNAME=`dirname $1`
+DATE=`date +"%Y%m%d_%H%M%S"`
+#~ mv $1 $DIRNAME"/"$FILENAME-$DATE".pdf"
+sed -i 's/^N__home_ezequiel_clientes_weme_fuentes_reportes_//g' /tmp/pdf.txt
+sed -i 's/h__trabajo_weme_//g' /tmp/pdf.txt
+RENOMBRADO=$(cat /tmp/pdf.txt)
+mv /home/$USER/PDF/$NOMBRE $FILENAME-$DATE".pdf"
+# mv /home/ezequiel/PDF/$NOMBRE /home/ezequiel/PDF/$RENOMBRADO-$DATE".pdf"
+for FILE in /home/$user/PDF/FA* ; do NEWFILE2=`echo ${FILE:0:22}` ; mv $FILE $NEWFILE2 ; done
+for FILE in FA* ; do mv $FILE $FILE.pdf ; done
+rm /tmp/pdf.txt
+'
+

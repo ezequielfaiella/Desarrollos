@@ -1,0 +1,4 @@
+#!/bin/sh
+ESCRITORIO=$(grep XDG_DESKTOP_DIR ~/.config/user-dirs.dirs | cut -f2 -d \" | cut -f2 -d /)
+cd /home/$USER/.WEME/
+sh weme.sh

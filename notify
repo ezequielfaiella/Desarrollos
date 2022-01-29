@@ -1,0 +1,11 @@
+# NOTIFY ES UN PROGRAMA QUE TE MANDA NOTIFICACIONES AL CELULAR. NECESITAS TENER INSTALADA
+# LA APLICACION DE NOTIFY Y REGISTAR EN LA PC EL CODIGO DE LA MISMA. 
+# SE HACE CON EL COMANDO  notify -r myKey 
+# SE USA someLongRunningCommand ; notify
+
+#!/bin/bash
+sudo apt-get install -y npm
+sudo npm install -g notify-cli 
+
+# si falla agregar esto
+# sudo ln -s /usr/bin/nodejs /usr/local/bin/node
