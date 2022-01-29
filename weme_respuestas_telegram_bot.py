@@ -12,7 +12,7 @@ from telegram.ext import Updater
 from telegram.ext import CommandHandler
 import os
 
-TOKEN = "802999301:AAFqDz2EMeyO0D8EtAP4AZkhfLuIGiqC3LQ"
+TOKEN = "xxxxxxxxxx"
 
 
 
